@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout layoutMain = null;
     private LinearLayout layoutAjouter = null;
     private LinearLayout layoutCalendrier = null;
+    private LinearLayout layoutConflit = null;
     private LinearLayout layoutMenu = null;
 
     private ImageView barreMainLayout = null;
@@ -128,6 +129,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    // Layout Conflit
+
+
+
+
 
     // Constantes
     private String TAG = "DEBUG_";
@@ -159,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
         layoutMain = (LinearLayout)findViewById(R.id.layoutMain);
         layoutAjouter = (LinearLayout)findViewById(R.id.layoutAjouter);
         layoutCalendrier = (LinearLayout)findViewById(R.id.layoutCalendrier);
+        layoutConflit = (LinearLayout)findViewById(R.id.layoutConflit);
         layoutMenu = (LinearLayout)findViewById(R.id.layoutMenu);
 
         barreMainLayout = (ImageView)findViewById(R.id.barreMainLayout);
@@ -271,13 +278,15 @@ public class MainActivity extends AppCompatActivity {
 
     void miseEnPage() {
         // Mise en page Layout
-        //setHW(layoutMain, 720, 1100);
+        setHW(layoutMain, 720, 1100);
         //setHW(layoutAjouter, 720, 1100);
-        setHW(layoutCalendrier, 720, 1100);
+        //setHW(layoutCalendrier, 720, 1100);
+        //setHW(layoutConflit, 720, 1100);
         setHW(layoutMenu, 720, 180);
-        setHW(layoutMain, 720, 0);  // Faire disparaitre Main
+        //setHW(layoutMain, 720, 0);  // Faire disparaitre Main
         setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
-        //setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
+        setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
+        setHW(layoutConflit, 720, 0);  // Faire disparaitre Conflit
 
         setHW(barreMainLayout, 720, 5);
 
