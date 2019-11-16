@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     // Menu Calendrier
     private ImageView calendrierEnTete = null;
     private LinearLayout calendrier_fond = null;
+    private LinearLayout calendrier_choixCG = null;
+    private ImageView calendrier_bouton_chaleur = null;
+    private ImageView calendrier_bouton_gestation = null;
 
     // En-tête
     private LinearLayout calendrier_enTete = null;
@@ -175,6 +178,10 @@ public class MainActivity extends AppCompatActivity {
         calendrierEnTete = (ImageView)findViewById(R.id.calendrierEnTete);
         calendrier_fond = (LinearLayout)findViewById(R.id.calendrier_fond);
 
+        calendrier_choixCG = (LinearLayout)findViewById(R.id.calendrier_choixCG);
+        calendrier_bouton_chaleur = (ImageView)findViewById(R.id.calendrier_chaleur);
+        calendrier_bouton_gestation = (ImageView)findViewById(R.id.calendrier_gestation);
+
         // En-tête
         calendrier_enTete = (LinearLayout) findViewById(R.id.calendrier_enTete);
         calendrier_moisL = (ImageView)findViewById(R.id.calendrier_moisL);
@@ -290,9 +297,15 @@ public class MainActivity extends AppCompatActivity {
 
         // Menu Calendrier
         setHW(calendrierEnTete, 720, 97);
-        setMargins(calendrierEnTete, 0, 0, 0, 38);
+        setMargins(calendrierEnTete, 0, 0, 0, 70);
         setHW(calendrier_fond, 720, 665);
         setMargins(calendrier_fond, 0, 0, 0, 0);
+        setHW(calendrier_choixCG, 720, 70);
+        setMargins(calendrier_choixCG, 0, 0, 0, 30);
+        setHW(calendrier_bouton_chaleur, 300, 70);
+        setMargins(calendrier_bouton_chaleur, 0, 0, 30, 0);
+        setHW(calendrier_bouton_gestation, 300, 70);
+        setMargins(calendrier_bouton_gestation, 30, 0, 0, 0);
 
         // En-tête
         setHW(calendrier_enTete, 720, 80);
