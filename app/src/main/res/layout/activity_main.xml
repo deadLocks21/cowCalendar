@@ -6,13 +6,200 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <!--Layout qui est affiché au démarrage-->
+        <!--<LinearLayout
+            android:id="@+id/layoutMain"
+            android:layout_width="wrap_content"
+            android:layout_height="1100px"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:background="@drawable/fond">
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutAjouter"
+            android:layout_width="wrap_content"
+            android:layout_height="1100px"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:background="@drawable/fond"
+            >
+
+        </LinearLayout>-->
+
+
+        <!--Layout du menu Calendrier-->
+        <LinearLayout
+            android:id="@+id/layoutCalendrier"
+            android:layout_width="wrap_content"
+            android:layout_height="1100px"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:background="@drawable/fond"
+            tools:ignore="MissingConstraints">
+
+            <!--En tête du menu-->
+            <ImageView
+                android:id="@+id/calendrierEnTete"
+                android:layout_width="720px"
+                android:layout_height="97px"
+                android:background="@drawable/calendrier_en_tete"/>
+
+
+            <!--Calendrier à proprement parler-->
+            <LinearLayout
+                android:id="@+id/calendrier_fond"
+                android:layout_width="720px"
+                android:layout_height="720px"
+                android:layout_marginTop="78px"
+                android:background="@drawable/calendrier_fond"
+                android:orientation="vertical">
+
+
+                <!--En tête du calendrier-->
+                <LinearLayout
+                    android:id="@+id/calendrier_enTete"
+                    android:layout_width="720px"
+                    android:layout_height="80px"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+
+                    <!--Bouton pour aller au mois précedent-->
+                    <ImageView
+                        android:id="@+id/calendrier_moisL"
+                        android:layout_width="70px"
+                        android:layout_height="70px"
+                        android:background="@drawable/calendrier_mois_l" />
+
+                    <!--Nom du mois ainsi que l'année-->
+                    <TextView
+                        android:id="@+id/calendrier_nomDuMois"
+                        android:layout_width="450px"
+                        android:layout_height="70px"
+                        android:text="Septembre 2001"
+                        android:textSize="55px"
+                        android:textColor="@color/dark"
+                        android:gravity="center"/>
+
+                    <!--Bouton pour aller au mois suivant-->
+                    <ImageView
+                        android:id="@+id/calendrier_moisR"
+                        android:layout_width="70px"
+                        android:layout_height="70px"
+                        android:background="@drawable/calendrier_mois_r" />
+
+
+            </LinearLayout>
+
+
+                <!--Lettres au dessus des cases-->
+                <LinearLayout
+                    android:id="@+id/calendrier_lettres"
+                    android:layout_width="720px"
+                    android:layout_height="75px"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/calendrier_lundi"
+                        android:layout_width="25px"
+                        android:layout_height="75px"
+                        android:background="@drawable/calendrier_lettre_l"/>
+
+                    <ImageView
+                        android:id="@+id/calendrier_mardi"
+                        android:layout_width="42px"
+                        android:layout_height="75px"
+                        android:background="@drawable/calendrier_lettre_m"/>
+
+                    <ImageView
+                        android:id="@+id/calendrier_mercredi"
+                        android:layout_width="42px"
+                        android:layout_height="75px"
+                        android:background="@drawable/calendrier_lettre_m"/>
+
+                    <ImageView
+                        android:id="@+id/calendrier_jeudi"
+                        android:layout_width="24px"
+                        android:layout_height="75px"
+                        android:background="@drawable/calendrier_lettre_j"/>
+
+                    <ImageView
+                        android:id="@+id/calendrier_vendredi"
+                        android:layout_width="30px"
+                        android:layout_height="75px"
+                        android:background="@drawable/calendrier_lettre_v"/>
+
+                    <ImageView
+                        android:id="@+id/calendrier_samedi"
+                        android:layout_width="35px"
+                        android:layout_height="75px"
+                        android:background="@drawable/calendrier_lettre_s"/>
+
+                    <ImageView
+                        android:id="@+id/calendrier_dimanche"
+                        android:layout_width="30px"
+                        android:layout_height="75px"
+                        android:background="@drawable/calendrier_lettre_d"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!--Barre noire de séparation-->
+        <ImageView
+            android:id="@+id/barreMainLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="5px"
+            android:background="@drawable/barre"/>
+
+
+        <!--Menu du bas-->
+        <LinearLayout
+            android:id="@+id/layoutMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="180px"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <!--Bouton Ajouter-->
+            <ImageView
+                android:id="@+id/btAjouter"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:background="@drawable/logo_ajouter"
+                android:layout_gravity="center"/>
+
+            <!--Bouton Calendrier-->
+            <ImageView
+                android:id="@+id/btCalendrier"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:background="@drawable/logo_calendrier"
+                android:layout_gravity="center"/>
+
+            <!--Bouton Conflit-->
+            <ImageView
+                android:id="@+id/btConflit"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:background="@drawable/logo_conflit"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
