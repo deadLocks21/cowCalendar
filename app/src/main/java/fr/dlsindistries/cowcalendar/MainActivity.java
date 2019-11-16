@@ -154,6 +154,25 @@ public class MainActivity extends AppCompatActivity {
 
         initPage();
         miseEnPage();
+
+        btAjouter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickMenuAjouter();
+            }
+        });
+        btCalendrier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickMenuCalendrier();
+            }
+        });
+        btConflit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickMenuConflit();
+            }
+        });
     }
 
 
@@ -496,5 +515,44 @@ public class MainActivity extends AppCompatActivity {
 
     public void setTextSize(TextView v, float s) {
         v.setTextSize((s*height)/1280);
+    }
+
+
+
+
+
+    // Fonctions OnClick
+    void onClickMenuAjouter(){
+        //setHW(layoutMain, 720, 1100);
+        setHW(layoutAjouter, 720, 1100);
+        //setHW(layoutCalendrier, 720, 1100);
+        //setHW(layoutConflit, 720, 1100);
+
+        setHW(layoutMain, 720, 0);  // Faire disparaitre Main
+        //setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
+        setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
+        setHW(layoutConflit, 720, 0);  // Faire disparaitre Conflit
+    }
+    void onClickMenuCalendrier(){
+        //setHW(layoutMain, 720, 1100);
+        //setHW(layoutAjouter, 720, 1100);
+        setHW(layoutCalendrier, 720, 1100);
+        //setHW(layoutConflit, 720, 1100);
+
+        setHW(layoutMain, 720, 0);  // Faire disparaitre Main
+        setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
+        //setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
+        setHW(layoutConflit, 720, 0);  // Faire disparaitre Conflit
+    }
+    void onClickMenuConflit(){
+        //setHW(layoutMain, 720, 1100);
+        //setHW(layoutAjouter, 720, 1100);
+        //setHW(layoutCalendrier, 720, 1100);
+        setHW(layoutConflit, 720, 1100);
+
+        setHW(layoutMain, 720, 0);  // Faire disparaitre Main
+        setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
+        setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
+        //setHW(layoutConflit, 720, 0);  // Faire disparaitre Conflit
     }
 }
