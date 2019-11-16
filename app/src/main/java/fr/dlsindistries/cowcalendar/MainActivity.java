@@ -43,6 +43,74 @@ public class MainActivity extends AppCompatActivity {
 
     // Lettres
     private LinearLayout calendrier_lettres = null;
+    private ImageView calendrier_lundi = null;
+    private ImageView calendrier_mardi = null;
+    private ImageView calendrier_mercredi = null;
+    private ImageView calendrier_jeudi = null;
+    private ImageView calendrier_vendredi = null;
+    private ImageView calendrier_samedi = null;
+    private ImageView calendrier_dimanche = null;
+
+    private LinearLayout calendrier_cases = null;
+
+    // Lignes
+    private LinearLayout calendrier_l1 = null;
+    private LinearLayout calendrier_l2 = null;
+    private LinearLayout calendrier_l3 = null;
+    private LinearLayout calendrier_l4 = null;
+    private LinearLayout calendrier_l5 = null;
+    private LinearLayout calendrier_l6 = null;
+
+    // Boules
+    private ImageView calendrier_c1 = null;
+    private ImageView calendrier_c2 = null;
+    private ImageView calendrier_c3 = null;
+    private ImageView calendrier_c4 = null;
+    private ImageView calendrier_c5 = null;
+    private ImageView calendrier_c6 = null;
+    private ImageView calendrier_c7 = null;
+    private ImageView calendrier_c8 = null;
+    private ImageView calendrier_c9 = null;
+    private ImageView calendrier_c10 = null;
+    private ImageView calendrier_c11 = null;
+    private ImageView calendrier_c12 = null;
+    private ImageView calendrier_c13 = null;
+    private ImageView calendrier_c14 = null;
+    private ImageView calendrier_c15 = null;
+    private ImageView calendrier_c16 = null;
+    private ImageView calendrier_c17 = null;
+    private ImageView calendrier_c18 = null;
+    private ImageView calendrier_c19 = null;
+    private ImageView calendrier_c20 = null;
+    private ImageView calendrier_c21 = null;
+    private ImageView calendrier_c22 = null;
+    private ImageView calendrier_c23 = null;
+    private ImageView calendrier_c24 = null;
+    private ImageView calendrier_c25 = null;
+    private ImageView calendrier_c26 = null;
+    private ImageView calendrier_c27 = null;
+    private ImageView calendrier_c28 = null;
+    private ImageView calendrier_c29 = null;
+    private ImageView calendrier_c30 = null;
+    private ImageView calendrier_c31 = null;
+    private ImageView calendrier_c32 = null;
+    private ImageView calendrier_c33 = null;
+    private ImageView calendrier_c34 = null;
+    private ImageView calendrier_c35 = null;
+    private ImageView calendrier_c36 = null;
+    private ImageView calendrier_c37 = null;
+    private ImageView calendrier_c38 = null;
+    private ImageView calendrier_c39 = null;
+    private ImageView calendrier_c40 = null;
+    private ImageView calendrier_c41 = null;
+    private ImageView calendrier_c42 = null;
+
+    // Affichage des évènements
+    private TextView calendrier_nomDeEvt = null;
+    private LinearLayout calendrier_choixEvt = null;
+    private ImageView calendrier_pageL = null;
+    private ImageView calendrier_affPage = null;
+    private ImageView calendrier_pageR = null;
 
 
 
@@ -105,17 +173,85 @@ public class MainActivity extends AppCompatActivity {
 
         // Lettres
         calendrier_lettres = (LinearLayout) findViewById(R.id.calendrier_lettres);
+        calendrier_lundi = (ImageView) findViewById(R.id.calendrier_lundi);
+        calendrier_mardi = (ImageView) findViewById(R.id.calendrier_mardi);
+        calendrier_mercredi = (ImageView) findViewById(R.id.calendrier_mercredi);
+        calendrier_jeudi = (ImageView) findViewById(R.id.calendrier_jeudi);
+        calendrier_vendredi = (ImageView) findViewById(R.id.calendrier_vendredi);
+        calendrier_samedi = (ImageView) findViewById(R.id.calendrier_samedi);
+        calendrier_dimanche = (ImageView) findViewById(R.id.calendrier_dimanche);
+
+        calendrier_cases = (LinearLayout)findViewById(R.id.calendrier_cases);
+
+        //Lignes
+        calendrier_l1 = (LinearLayout) findViewById(R.id.calendrier_l1);
+        calendrier_l2 = (LinearLayout) findViewById(R.id.calendrier_l2);
+        calendrier_l3 = (LinearLayout) findViewById(R.id.calendrier_l3);
+        calendrier_l4 = (LinearLayout) findViewById(R.id.calendrier_l4);
+        calendrier_l5 = (LinearLayout) findViewById(R.id.calendrier_l5);
+        calendrier_l6 = (LinearLayout) findViewById(R.id.calendrier_l6);
+
+        // Boules
+        calendrier_c1 = (ImageView) findViewById(R.id.calendrier_c1);
+        calendrier_c2 = (ImageView) findViewById(R.id.calendrier_c2);
+        calendrier_c3 = (ImageView) findViewById(R.id.calendrier_c3);
+        calendrier_c4 = (ImageView) findViewById(R.id.calendrier_c4);
+        calendrier_c5 = (ImageView) findViewById(R.id.calendrier_c5);
+        calendrier_c6 = (ImageView) findViewById(R.id.calendrier_c6);
+        calendrier_c7 = (ImageView) findViewById(R.id.calendrier_c7);
+        calendrier_c8 = (ImageView) findViewById(R.id.calendrier_c8);
+        calendrier_c9 = (ImageView) findViewById(R.id.calendrier_c9);
+        calendrier_c10 = (ImageView) findViewById(R.id.calendrier_c10);
+        calendrier_c11 = (ImageView) findViewById(R.id.calendrier_c11);
+        calendrier_c12 = (ImageView) findViewById(R.id.calendrier_c12);
+        calendrier_c13 = (ImageView) findViewById(R.id.calendrier_c13);
+        calendrier_c14 = (ImageView) findViewById(R.id.calendrier_c14);
+        calendrier_c15 = (ImageView) findViewById(R.id.calendrier_c15);
+        calendrier_c16 = (ImageView) findViewById(R.id.calendrier_c16);
+        calendrier_c17 = (ImageView) findViewById(R.id.calendrier_c17);
+        calendrier_c18 = (ImageView) findViewById(R.id.calendrier_c18);
+        calendrier_c19 = (ImageView) findViewById(R.id.calendrier_c19);
+        calendrier_c20 = (ImageView) findViewById(R.id.calendrier_c20);
+        calendrier_c21 = (ImageView) findViewById(R.id.calendrier_c21);
+        calendrier_c22 = (ImageView) findViewById(R.id.calendrier_c22);
+        calendrier_c23 = (ImageView) findViewById(R.id.calendrier_c23);
+        calendrier_c24 = (ImageView) findViewById(R.id.calendrier_c24);
+        calendrier_c25 = (ImageView) findViewById(R.id.calendrier_c25);
+        calendrier_c26 = (ImageView) findViewById(R.id.calendrier_c26);
+        calendrier_c27 = (ImageView) findViewById(R.id.calendrier_c27);
+        calendrier_c28 = (ImageView) findViewById(R.id.calendrier_c28);
+        calendrier_c29 = (ImageView) findViewById(R.id.calendrier_c29);
+        calendrier_c30 = (ImageView) findViewById(R.id.calendrier_c30);
+        calendrier_c31 = (ImageView) findViewById(R.id.calendrier_c31);
+        calendrier_c32 = (ImageView) findViewById(R.id.calendrier_c32);
+        calendrier_c33 = (ImageView) findViewById(R.id.calendrier_c33);
+        calendrier_c34 = (ImageView) findViewById(R.id.calendrier_c34);
+        calendrier_c35 = (ImageView) findViewById(R.id.calendrier_c35);
+        calendrier_c36 = (ImageView) findViewById(R.id.calendrier_c36);
+        calendrier_c37 = (ImageView) findViewById(R.id.calendrier_c37);
+        calendrier_c38 = (ImageView) findViewById(R.id.calendrier_c38);
+        calendrier_c39 = (ImageView) findViewById(R.id.calendrier_c39);
+        calendrier_c40 = (ImageView) findViewById(R.id.calendrier_c40);
+        calendrier_c41 = (ImageView) findViewById(R.id.calendrier_c41);
+        calendrier_c42 = (ImageView) findViewById(R.id.calendrier_c42);
+
+        // Affichage des évènements
+        calendrier_nomDeEvt = (TextView)findViewById(R.id.calendrier_nomDeEvt);
+        calendrier_choixEvt = (LinearLayout)findViewById(R.id.calendrier_choixEvt);
+        calendrier_pageL = (ImageView) findViewById(R.id.calendrier_pageL);
+        calendrier_affPage = (ImageView) findViewById(R.id.calendrier_affPage);
+        calendrier_pageR = (ImageView) findViewById(R.id.calendrier_pageR);
     }
 
     void miseEnPage() {
         // Mise en page Layout
         //setHW(layoutMain, 720, 1100);
-        //setHW(layoutAjouter, 720, 1100);
+        setHW(layoutAjouter, 720, 1100);
         setHW(layoutCalendrier, 720, 1100);
         setHW(layoutMenu, 720, 180);
         setHW(layoutMain, 720, 0);  // Faire disparaitre Main
-        setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
-        // setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
+        //setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
+        setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
 
         setHW(barreMainLayout, 720, 5);
 
@@ -140,6 +276,7 @@ public class MainActivity extends AppCompatActivity {
 
         // En-tête
         setHW(calendrier_enTete, 720, 80);
+        setMargins(calendrier_enTete, 0, 15, 0, 0);
         setHW(calendrier_moisL, 70, 70);
         setHW(calendrier_nomDuMois, 450, 70);
         setTextSize(calendrier_nomDuMois, 25);
@@ -147,6 +284,133 @@ public class MainActivity extends AppCompatActivity {
 
         // Lettres
         setHW(calendrier_lettres, 720, 75);
+        setMargins(calendrier_lettres, 0, 117, 0, 14);
+        setHW(calendrier_lundi, 25, 75);
+        setMargins(calendrier_lundi, 0, 0, 51, 0);
+        setHW(calendrier_mardi, 42, 75);
+        setMargins(calendrier_mardi, 0, 0, 43, 0);
+        setHW(calendrier_mercredi, 42, 75);
+        setMargins(calendrier_mercredi, 0, 0, 52, 0);
+        setHW(calendrier_jeudi, 24, 75);
+        setMargins(calendrier_jeudi, 0, 0, 58, 0);
+        setHW(calendrier_vendredi, 30, 75);
+        setMargins(calendrier_vendredi, 0, 0, 53, 0);
+        setHW(calendrier_samedi, 35, 75);
+        setMargins(calendrier_samedi, 0, 0, 52, 0);
+        setHW(calendrier_dimanche, 30, 75);
+
+        setHW(calendrier_cases, 720, 496);
+
+        // Lignes
+        setHW(calendrier_l1, 720, 70);
+        setMargins(calendrier_l1, 0, 0, 0, 15);
+        setHW(calendrier_l2, 720, 70);
+        setMargins(calendrier_l2, 0, 0, 0, 15);
+        setHW(calendrier_l3, 720, 70);
+        setMargins(calendrier_l3, 0, 0, 0, 15);
+        setHW(calendrier_l4, 720, 70);
+        setMargins(calendrier_l4, 0, 0, 0, 15);
+        setHW(calendrier_l5, 720, 70);
+        setMargins(calendrier_l5, 0, 0, 0, 15);
+        setHW(calendrier_l6, 720, 70);
+        setMargins(calendrier_l6, 0, 0, 0, 15);
+
+        // Boules
+        setHW(calendrier_c1, 70, 70);
+        setMargins(calendrier_c1, 8, 0, 8, 0);
+        setHW(calendrier_c2, 70, 70);
+        setMargins(calendrier_c2, 8, 0, 8, 0);
+        setHW(calendrier_c3, 70, 70);
+        setMargins(calendrier_c3, 8, 0, 8, 0);
+        setHW(calendrier_c4, 70, 70);
+        setMargins(calendrier_c4, 8, 0, 8, 0);
+        setHW(calendrier_c5, 70, 70);
+        setMargins(calendrier_c5, 8, 0, 8, 0);
+        setHW(calendrier_c6, 70, 70);
+        setMargins(calendrier_c6, 8, 0, 8, 0);
+        setHW(calendrier_c7, 70, 70);
+        setMargins(calendrier_c7, 8, 0, 8, 0);
+        setHW(calendrier_c8, 70, 70);
+        setMargins(calendrier_c8, 8, 0, 8, 0);
+        setHW(calendrier_c9, 70, 70);
+        setMargins(calendrier_c9, 8, 0, 8, 0);
+        setHW(calendrier_c10, 70, 70);
+        setMargins(calendrier_c10, 8, 0, 8, 0);
+        setHW(calendrier_c11, 70, 70);
+        setMargins(calendrier_c11, 8, 0, 8, 0);
+        setHW(calendrier_c12, 70, 70);
+        setMargins(calendrier_c12, 8, 0, 8, 0);
+        setHW(calendrier_c13, 70, 70);
+        setMargins(calendrier_c13, 8, 0, 8, 0);
+        setHW(calendrier_c14, 70, 70);
+        setMargins(calendrier_c14, 8, 0, 8, 0);
+        setHW(calendrier_c15, 70, 70);
+        setMargins(calendrier_c15, 8, 0, 8, 0);
+        setHW(calendrier_c16, 70, 70);
+        setMargins(calendrier_c16, 8, 0, 8, 0);
+        setHW(calendrier_c17, 70, 70);
+        setMargins(calendrier_c17, 8, 0, 8, 0);
+        setHW(calendrier_c18, 70, 70);
+        setMargins(calendrier_c18, 8, 0, 8, 0);
+        setHW(calendrier_c19, 70, 70);
+        setMargins(calendrier_c19, 8, 0, 8, 0);
+        setHW(calendrier_c20, 70, 70);
+        setMargins(calendrier_c20, 8, 0, 8, 0);
+        setHW(calendrier_c21, 70, 70);
+        setMargins(calendrier_c21, 8, 0, 8, 0);
+        setHW(calendrier_c22, 70, 70);
+        setMargins(calendrier_c22, 8, 0, 8, 0);
+        setHW(calendrier_c23, 70, 70);
+        setMargins(calendrier_c23, 8, 0, 8, 0);
+        setHW(calendrier_c24, 70, 70);
+        setMargins(calendrier_c24, 8, 0, 8, 0);
+        setHW(calendrier_c25, 70, 70);
+        setMargins(calendrier_c25, 8, 0, 8, 0);
+        setHW(calendrier_c26, 70, 70);
+        setMargins(calendrier_c26, 8, 0, 8, 0);
+        setHW(calendrier_c27, 70, 70);
+        setMargins(calendrier_c27, 8, 0, 8, 0);
+        setHW(calendrier_c28, 70, 70);
+        setMargins(calendrier_c28, 8, 0, 8, 0);
+        setHW(calendrier_c29, 70, 70);
+        setMargins(calendrier_c29, 8, 0, 8, 0);
+        setHW(calendrier_c30, 70, 70);
+        setMargins(calendrier_c30, 8, 0, 8, 0);
+        setHW(calendrier_c31, 70, 70);
+        setMargins(calendrier_c31, 8, 0, 8, 0);
+        setHW(calendrier_c32, 70, 70);
+        setMargins(calendrier_c32, 8, 0, 8, 0);
+        setHW(calendrier_c33, 70, 70);
+        setMargins(calendrier_c33, 8, 0, 8, 0);
+        setHW(calendrier_c34, 70, 70);
+        setMargins(calendrier_c34, 8, 0, 8, 0);
+        setHW(calendrier_c35, 70, 70);
+        setMargins(calendrier_c35, 8, 0, 8, 0);
+        setHW(calendrier_c36, 70, 70);
+        setMargins(calendrier_c36, 8, 0, 8, 0);
+        setHW(calendrier_c37, 70, 70);
+        setMargins(calendrier_c37, 8, 0, 8, 0);
+        setHW(calendrier_c38, 70, 70);
+        setMargins(calendrier_c38, 8, 0, 8, 0);
+        setHW(calendrier_c39, 70, 70);
+        setMargins(calendrier_c39, 8, 0, 8, 0);
+        setHW(calendrier_c40, 70, 70);
+        setMargins(calendrier_c40, 8, 0, 8, 0);
+        setHW(calendrier_c41, 70, 70);
+        setMargins(calendrier_c41, 8, 0, 8, 0);
+        setHW(calendrier_c42, 70, 70);
+        setMargins(calendrier_c42, 8, 0, 8, 0);
+
+        // Affichage des évènements
+        setHW(calendrier_nomDeEvt, 720, 80);
+        setMargins(calendrier_nomDeEvt, 0, 15, 0, 25);
+        setTextSize(calendrier_nomDeEvt, 25);
+        setHW(calendrier_choixEvt, 720, 86);
+        setHW(calendrier_pageL, 66, 86);
+        setMargins(calendrier_pageL, 0, 0, 14, 0);
+        setHW(calendrier_affPage, 66, 86);
+        setHW(calendrier_pageR, 66, 86);
+        setMargins(calendrier_pageR, 14, 0, 0, 0);
     }
 
 

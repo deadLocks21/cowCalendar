@@ -14,7 +14,7 @@
         android:layout_gravity="center">
 
         <!--Layout qui est affiché au démarrage-->
-        <!--<LinearLayout
+        <LinearLayout
             android:id="@+id/layoutMain"
             android:layout_width="wrap_content"
             android:layout_height="1100px"
@@ -33,7 +33,7 @@
             android:background="@drawable/fond"
             >
 
-        </LinearLayout>-->
+        </LinearLayout>
 
 
         <!--Layout du menu Calendrier-->
@@ -151,6 +151,324 @@
                         android:background="@drawable/calendrier_lettre_d"/>
 
                 </LinearLayout>
+
+                <!--Cases du calendrier-->
+                <LinearLayout
+                    android:id="@+id/calendrier_cases"
+                    android:layout_width="720px"
+                    android:layout_height="495.5px"
+                    android:orientation="vertical"
+                    android:gravity="top">
+
+                    <LinearLayout
+                        android:id="@+id/calendrier_l1"
+                        android:layout_width="720px"
+                        android:layout_height="70px"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/calendrier_c1"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c2"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c3"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c4"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c5"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c6"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c7"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/calendrier_l2"
+                        android:layout_width="720px"
+                        android:layout_height="70px"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/calendrier_c8"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c9"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c10"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c11"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c12"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c13"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c14"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/calendrier_l3"
+                        android:layout_width="720px"
+                        android:layout_height="70px"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/calendrier_c15"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c16"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c17"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c18"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c19"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c20"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c21"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/calendrier_l4"
+                        android:layout_width="720px"
+                        android:layout_height="70px"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/calendrier_c22"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c23"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c24"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c25"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c26"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c27"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c28"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/calendrier_l5"
+                        android:layout_width="720px"
+                        android:layout_height="70px"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/calendrier_c29"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c30"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c31"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c32"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c33"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c34"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c35"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/calendrier_l6"
+                        android:layout_width="720px"
+                        android:layout_height="70px"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/calendrier_c36"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c37"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c38"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c39"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c40"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c41"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                        <ImageView
+                            android:id="@+id/calendrier_c42"
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:background="@drawable/calendrier_boule_av_evt" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!--Nom de l'évènement-->
+            <TextView
+                android:id="@+id/calendrier_nomDeEvt"
+                android:layout_width="720px"
+                android:layout_height="80px"
+                android:text="Lorem Ipsum"
+                android:gravity="center"
+                android:textColor="@color/dark"/>
+
+            <!--Choix de l'évènement-->
+            <LinearLayout
+                android:id="@+id/calendrier_choixEvt"
+                android:layout_width="720px"
+                android:layout_height="86px"
+                android:orientation="horizontal"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/calendrier_pageL"
+                    android:layout_width="66px"
+                    android:layout_height="86px"
+                    android:background="@drawable/calendrier_page_gauche" />
+
+                <ImageView
+                    android:id="@+id/calendrier_affPage"
+                    android:layout_width="66px"
+                    android:layout_height="86px"
+                    android:background="@drawable/calendrier_page_0" />
+
+                <ImageView
+                    android:id="@+id/calendrier_pageR"
+                    android:layout_width="66px"
+                    android:layout_height="86px"
+                    android:background="@drawable/calendrier_page_droite" />
+
             </LinearLayout>
         </LinearLayout>
 
