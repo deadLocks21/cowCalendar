@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -111,6 +112,15 @@ public class MainActivity extends AppCompatActivity {
     private ImageView calendrier_pageL = null;
     private ImageView calendrier_affPage = null;
     private ImageView calendrier_pageR = null;
+
+
+
+
+    // Layout Ajouter
+    private ImageView ajouter_enTete = null;
+    private EditText ajouter_champ = null;
+    private TextView ajouter_date = null;
+    private ImageView ajouter_bouton = null;
 
 
 
@@ -241,17 +251,26 @@ public class MainActivity extends AppCompatActivity {
         calendrier_pageL = (ImageView) findViewById(R.id.calendrier_pageL);
         calendrier_affPage = (ImageView) findViewById(R.id.calendrier_affPage);
         calendrier_pageR = (ImageView) findViewById(R.id.calendrier_pageR);
+
+
+
+
+        // Layout Ajouter
+        ajouter_enTete = (ImageView)findViewById(R.id.ajouter_enTete);
+        ajouter_champ = (EditText)findViewById(R.id.ajouter_champ);
+        ajouter_date = (TextView)findViewById(R.id.ajouter_date);
+        ajouter_bouton = (ImageView)findViewById(R.id.ajouter_bouton);
     }
 
     void miseEnPage() {
         // Mise en page Layout
         //setHW(layoutMain, 720, 1100);
-        setHW(layoutAjouter, 720, 1100);
+        //setHW(layoutAjouter, 720, 1100);
         setHW(layoutCalendrier, 720, 1100);
         setHW(layoutMenu, 720, 180);
         setHW(layoutMain, 720, 0);  // Faire disparaitre Main
-        //setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
-        setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
+        setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
+        //setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
 
         setHW(barreMainLayout, 720, 5);
 
@@ -271,12 +290,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Menu Calendrier
         setHW(calendrierEnTete, 720, 97);
-        setHW(calendrier_fond, 720, 720);
-        setMargins(calendrier_fond, 0, 78, 0, 0);
+        setMargins(calendrierEnTete, 0, 0, 0, 38);
+        setHW(calendrier_fond, 720, 665);
+        setMargins(calendrier_fond, 0, 0, 0, 0);
 
         // En-tête
         setHW(calendrier_enTete, 720, 80);
-        setMargins(calendrier_enTete, 0, 15, 0, 0);
+        setMargins(calendrier_enTete, 0, 2, 0, 0);
         setHW(calendrier_moisL, 70, 70);
         setHW(calendrier_nomDuMois, 450, 70);
         setTextSize(calendrier_nomDuMois, 25);
@@ -284,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Lettres
         setHW(calendrier_lettres, 720, 75);
-        setMargins(calendrier_lettres, 0, 117, 0, 14);
+        setMargins(calendrier_lettres, 0, 0, 0, 14);
         setHW(calendrier_lundi, 25, 75);
         setMargins(calendrier_lundi, 0, 0, 51, 0);
         setHW(calendrier_mardi, 42, 75);
@@ -411,6 +431,20 @@ public class MainActivity extends AppCompatActivity {
         setHW(calendrier_affPage, 66, 86);
         setHW(calendrier_pageR, 66, 86);
         setMargins(calendrier_pageR, 14, 0, 0, 0);
+
+
+
+
+        // Layout Ajouter
+        setHW(ajouter_enTete, 720, 97);
+        setMargins(ajouter_enTete, 0, 0, 0, 68);
+        setHW(ajouter_champ, 720, 85);
+        setMargins(ajouter_champ, 0, 0, 0, 50);
+        ajouter_champ.setTextSize(25);
+        setHW(ajouter_date, 720, 85);
+        setMargins(ajouter_date, 0, 0, 0, 50);
+        setHW(ajouter_bouton, 720, 85);
+        setTextSize(ajouter_date, 25);
     }
 
 

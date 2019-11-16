@@ -24,6 +24,7 @@
         </LinearLayout>
 
 
+        <!--Layout du menu Ajouter-->
         <LinearLayout
             android:id="@+id/layoutAjouter"
             android:layout_width="wrap_content"
@@ -32,6 +33,37 @@
             android:layout_gravity="center"
             android:background="@drawable/fond"
             >
+            <ImageView
+                android:id="@+id/ajouter_enTete"
+                android:layout_width="720px"
+                android:layout_height="97px"
+                android:background="@drawable/ajouter_en_tete" />
+
+            <EditText
+                android:id="@+id/ajouter_champ"
+                android:layout_width="720px"
+                android:layout_height="85px"
+                android:background="@drawable/ajouter_champ"
+                android:gravity="center"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/ajouter_date"
+                android:layout_width="720px"
+                android:layout_height="85px"
+                android:background="@drawable/ajouter_date"
+                android:text="xx/xx/xxxx"
+                android:textColor="@color/dark"
+                android:textSize="70px"
+                android:gravity="center"/>
+
+            <ImageView
+                android:id="@+id/ajouter_bouton"
+                android:layout_width="720px"
+                android:layout_height="85px"
+                android:background="@drawable/ajouter_bouton_ajouter" />
+
 
         </LinearLayout>
 
