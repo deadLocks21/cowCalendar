@@ -67,6 +67,7 @@
 
         </LinearLayout>
 
+        <!--TODO changer boule en TextView-->
 
         <!--Layout du menu Calendrier-->
         <LinearLayout
@@ -509,11 +510,15 @@
                     android:layout_height="86px"
                     android:background="@drawable/calendrier_page_gauche" />
 
-                <ImageView
+                <TextView
                     android:id="@+id/calendrier_affPage"
                     android:layout_width="66px"
                     android:layout_height="86px"
-                    android:background="@drawable/calendrier_page_0" />
+                    android:background="@drawable/calendrier_page"
+                    android:text="99"
+                    android:gravity="center"
+                    android:textSize="50px"
+                    android:textColor="@color/dark" />
 
                 <ImageView
                     android:id="@+id/calendrier_pageR"
@@ -533,6 +538,453 @@
             android:orientation="vertical"
             android:layout_gravity="center"
             android:background="@drawable/fond">
+
+            <ImageView
+                android:id="@+id/conflit_enTete"
+                android:layout_width="720px"
+                android:layout_height="97px"
+                android:layout_marginBottom="43px"
+                android:background="@drawable/conflit_en_tete" />
+
+            <!--Ligne 1-->
+            <LinearLayout
+                android:id="@+id/conflit_l1"
+                android:layout_width="720px"
+                android:layout_height="65px"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20px">
+
+                <TextView
+                    android:id="@+id/conflit_evt1"
+
+android:textColor="@color/dark"                    android:layout_width="wrap_content"
+                    android:layout_height="65px"
+                    android:maxWidth="450px"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:id="@+id/conflit_ok1"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_ok"/>
+
+                <ImageView
+                    android:id="@+id/conflit_croix1"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_croix" />
+
+                <ImageView
+                    android:id="@+id/conflit_bin1"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_corbeille" />
+
+            </LinearLayout>
+
+
+            <!--Ligne 2-->
+            <LinearLayout
+                android:id="@+id/conflit_l2"
+                android:layout_width="720px"
+                android:layout_height="65px"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20px">
+
+                <TextView
+                    android:id="@+id/conflit_evt2"
+
+android:textColor="@color/dark"                    android:layout_width="wrap_content"
+                    android:layout_height="65px"
+                    android:maxWidth="450px"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:id="@+id/conflit_ok2"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_ok"/>
+
+                <ImageView
+                    android:id="@+id/conflit_croix2"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_croix" />
+
+                <ImageView
+                    android:id="@+id/conflit_bin2"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_corbeille" />
+
+            </LinearLayout>
+
+
+            <!--Ligne 3-->
+            <LinearLayout
+                android:id="@+id/conflit_l3"
+                android:layout_width="720px"
+                android:layout_height="65px"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20px">
+
+                <TextView
+                    android:id="@+id/conflit_evt3"
+
+android:textColor="@color/dark"                    android:layout_width="wrap_content"
+                    android:layout_height="65px"
+                    android:maxWidth="450px"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:id="@+id/conflit_ok3"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_ok"/>
+
+                <ImageView
+                    android:id="@+id/conflit_croix3"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_croix" />
+
+                <ImageView
+                    android:id="@+id/conflit_bin3"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_corbeille" />
+
+            </LinearLayout>
+
+
+            <!--Ligne 4-->
+            <LinearLayout
+                android:id="@+id/conflit_l4"
+                android:layout_width="720px"
+                android:layout_height="65px"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20px">
+
+                <TextView
+                    android:id="@+id/conflit_evt4"
+
+android:textColor="@color/dark"                    android:layout_width="wrap_content"
+                    android:layout_height="65px"
+                    android:maxWidth="450px"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:id="@+id/conflit_ok4"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_ok"/>
+
+                <ImageView
+                    android:id="@+id/conflit_croix4"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_croix" />
+
+                <ImageView
+                    android:id="@+id/conflit_bin4"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_corbeille" />
+
+            </LinearLayout>
+
+
+            <!--Ligne 5-->
+            <LinearLayout
+                android:id="@+id/conflit_l5"
+                android:layout_width="720px"
+                android:layout_height="65px"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20px">
+
+                <TextView
+                    android:id="@+id/conflit_evt5"
+
+android:textColor="@color/dark"                    android:layout_width="wrap_content"
+                    android:layout_height="65px"
+                    android:maxWidth="450px"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:id="@+id/conflit_ok5"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_ok"/>
+
+                <ImageView
+                    android:id="@+id/conflit_croix5"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_croix" />
+
+                <ImageView
+                    android:id="@+id/conflit_bin5"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_corbeille" />
+
+            </LinearLayout>
+
+
+            <!--Ligne 6-->
+            <LinearLayout
+                android:id="@+id/conflit_l6"
+                android:layout_width="720px"
+                android:layout_height="65px"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20px">
+
+                <TextView
+                    android:id="@+id/conflit_evt6"
+
+android:textColor="@color/dark"                    android:layout_width="wrap_content"
+                    android:layout_height="65px"
+                    android:maxWidth="450px"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:id="@+id/conflit_ok6"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_ok"/>
+
+                <ImageView
+                    android:id="@+id/conflit_croix6"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_croix" />
+
+                <ImageView
+                    android:id="@+id/conflit_bin6"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_corbeille" />
+
+            </LinearLayout>
+
+
+            <!--Ligne 7-->
+            <LinearLayout
+                android:id="@+id/conflit_l7"
+                android:layout_width="720px"
+                android:layout_height="65px"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20px">
+
+                <TextView
+                    android:id="@+id/conflit_evt7"
+
+android:textColor="@color/dark"                    android:layout_width="wrap_content"
+                    android:layout_height="65px"
+                    android:maxWidth="450px"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:id="@+id/conflit_ok7"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_ok"/>
+
+                <ImageView
+                    android:id="@+id/conflit_croix7"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_croix" />
+
+                <ImageView
+                    android:id="@+id/conflit_bin7"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_corbeille" />
+
+            </LinearLayout>
+
+
+            <!--Ligne 8-->
+            <LinearLayout
+                android:id="@+id/conflit_l8"
+                android:layout_width="720px"
+                android:layout_height="65px"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20px">
+
+                <TextView
+                    android:id="@+id/conflit_evt8"
+
+android:textColor="@color/dark"                    android:layout_width="wrap_content"
+                    android:layout_height="65px"
+                    android:maxWidth="450px"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:id="@+id/conflit_ok8"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_ok"/>
+
+                <ImageView
+                    android:id="@+id/conflit_croix8"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_croix" />
+
+                <ImageView
+                    android:id="@+id/conflit_bin8"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_corbeille" />
+
+            </LinearLayout>
+
+
+            <!--Ligne 9-->
+            <LinearLayout
+                android:id="@+id/conflit_l9"
+                android:layout_width="720px"
+                android:layout_height="65px"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20px">
+
+                <TextView
+                    android:id="@+id/conflit_evt9"
+
+android:textColor="@color/dark"                    android:layout_width="wrap_content"
+                    android:layout_height="65px"
+                    android:maxWidth="450px"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:id="@+id/conflit_ok9"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_ok"/>
+
+                <ImageView
+                    android:id="@+id/conflit_croix9"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_croix" />
+
+                <ImageView
+                    android:id="@+id/conflit_bin9"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_corbeille" />
+
+            </LinearLayout>
+
+            <!--Ligne 10-->
+            <LinearLayout
+                android:id="@+id/conflit_l10"
+                android:layout_width="720px"
+                android:layout_height="65px"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20px">
+
+                <TextView
+                    android:id="@+id/conflit_evt10"
+                    android:textColor="@color/dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="65px"
+                    android:maxWidth="450px"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:id="@+id/conflit_ok10"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_ok"/>
+
+                <ImageView
+                    android:id="@+id/conflit_croix10"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_croix" />
+
+                <ImageView
+                    android:id="@+id/conflit_bin10"
+                    android:layout_width="65px"
+                    android:layout_height="65px"
+                    android:background="@drawable/conflit_corbeille" />
+
+            </LinearLayout>
+
+            <!--Choix de l'évènement-->
+            <LinearLayout
+                android:id="@+id/conflit_choixEvt"
+                android:layout_width="720px"
+                android:layout_height="86px"
+                android:orientation="horizontal"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/conflit_pageL"
+                    android:layout_width="66px"
+                    android:layout_height="86px"
+                    android:background="@drawable/calendrier_page_gauche" />
+
+                <TextView
+                    android:id="@+id/conflit_affPage"
+                    android:layout_width="66px"
+                    android:layout_height="86px"
+                    android:background="@drawable/calendrier_page"
+                    android:text="99"
+                    android:gravity="center"
+                    android:textSize="50px"
+                    android:textColor="@color/dark" />
+
+                <ImageView
+                    android:id="@+id/conflit_pageR"
+                    android:layout_width="66px"
+                    android:layout_height="86px"
+                    android:background="@drawable/calendrier_page_droite" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

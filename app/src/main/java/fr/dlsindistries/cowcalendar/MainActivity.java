@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView calendrier_nomDeEvt = null;
     private LinearLayout calendrier_choixEvt = null;
     private ImageView calendrier_pageL = null;
-    private ImageView calendrier_affPage = null;
+    private TextView calendrier_affPage = null;
     private ImageView calendrier_pageR = null;
 
 
@@ -130,6 +130,63 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Layout Conflit
+    private ImageView conflit_enTete = null;
+
+    private LinearLayout conflit_l1 = null;
+    private TextView conflit_evt1 = null;
+    private ImageView conflit_ok1 = null;
+    private ImageView conflit_croix1 = null;
+    private ImageView conflit_bin1 = null;
+    private LinearLayout conflit_l2 = null;
+    private TextView conflit_evt2 = null;
+    private ImageView conflit_ok2 = null;
+    private ImageView conflit_croix2 = null;
+    private ImageView conflit_bin2 = null;
+    private LinearLayout conflit_l3 = null;
+    private TextView conflit_evt3 = null;
+    private ImageView conflit_ok3 = null;
+    private ImageView conflit_croix3 = null;
+    private ImageView conflit_bin3 = null;
+    private LinearLayout conflit_l4 = null;
+    private TextView conflit_evt4 = null;
+    private ImageView conflit_ok4 = null;
+    private ImageView conflit_croix4 = null;
+    private ImageView conflit_bin4 = null;
+    private LinearLayout conflit_l5 = null;
+    private TextView conflit_evt5 = null;
+    private ImageView conflit_ok5 = null;
+    private ImageView conflit_croix5 = null;
+    private ImageView conflit_bin5 = null;
+    private LinearLayout conflit_l6 = null;
+    private TextView conflit_evt6 = null;
+    private ImageView conflit_ok6 = null;
+    private ImageView conflit_croix6 = null;
+    private ImageView conflit_bin6 = null;
+    private LinearLayout conflit_l7 = null;
+    private TextView conflit_evt7 = null;
+    private ImageView conflit_ok7 = null;
+    private ImageView conflit_croix7 = null;
+    private ImageView conflit_bin7 = null;
+    private LinearLayout conflit_l8 = null;
+    private TextView conflit_evt8 = null;
+    private ImageView conflit_ok8 = null;
+    private ImageView conflit_croix8 = null;
+    private ImageView conflit_bin8 = null;
+    private LinearLayout conflit_l9 = null;
+    private TextView conflit_evt9 = null;
+    private ImageView conflit_ok9 = null;
+    private ImageView conflit_croix9 = null;
+    private ImageView conflit_bin9 = null;
+    private LinearLayout conflit_l10 = null;
+    private TextView conflit_evt10 = null;
+    private ImageView conflit_ok10 = null;
+    private ImageView conflit_croix10 = null;
+    private ImageView conflit_bin10 = null;
+
+    private LinearLayout conflit_choixEvt = null;
+    private ImageView conflit_pageL = null;
+    private TextView conflit_affPage = null;
+    private ImageView conflit_pageR = null;
 
 
 
@@ -282,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
         calendrier_nomDeEvt = (TextView)findViewById(R.id.calendrier_nomDeEvt);
         calendrier_choixEvt = (LinearLayout)findViewById(R.id.calendrier_choixEvt);
         calendrier_pageL = (ImageView) findViewById(R.id.calendrier_pageL);
-        calendrier_affPage = (ImageView) findViewById(R.id.calendrier_affPage);
+        calendrier_affPage = (TextView) findViewById(R.id.calendrier_affPage);
         calendrier_pageR = (ImageView) findViewById(R.id.calendrier_pageR);
 
 
@@ -293,19 +350,82 @@ public class MainActivity extends AppCompatActivity {
         ajouter_champ = (EditText)findViewById(R.id.ajouter_champ);
         ajouter_date = (TextView)findViewById(R.id.ajouter_date);
         ajouter_bouton = (ImageView)findViewById(R.id.ajouter_bouton);
+
+
+
+
+        // Layout Conflit
+        conflit_enTete = (ImageView)findViewById(R.id.conflit_enTete);
+
+        conflit_l1 = (LinearLayout) findViewById(R.id.conflit_l1);
+        conflit_evt1 = (TextView) findViewById(R.id.conflit_evt1);
+        conflit_ok1 = (ImageView) findViewById(R.id.conflit_ok1);
+        conflit_croix1 = (ImageView) findViewById(R.id.conflit_croix1);
+        conflit_bin1 = (ImageView) findViewById(R.id.conflit_bin1);
+        conflit_l2 = (LinearLayout) findViewById(R.id.conflit_l2);
+        conflit_evt2 = (TextView) findViewById(R.id.conflit_evt2);
+        conflit_ok2 = (ImageView) findViewById(R.id.conflit_ok2);
+        conflit_croix2 = (ImageView) findViewById(R.id.conflit_croix2);
+        conflit_bin2 = (ImageView) findViewById(R.id.conflit_bin2);
+        conflit_l3 = (LinearLayout) findViewById(R.id.conflit_l3);
+        conflit_evt3 = (TextView) findViewById(R.id.conflit_evt3);
+        conflit_ok3 = (ImageView) findViewById(R.id.conflit_ok3);
+        conflit_croix3 = (ImageView) findViewById(R.id.conflit_croix3);
+        conflit_bin3 = (ImageView) findViewById(R.id.conflit_bin3);
+        conflit_l4 = (LinearLayout) findViewById(R.id.conflit_l4);
+        conflit_evt4 = (TextView) findViewById(R.id.conflit_evt4);
+        conflit_ok4 = (ImageView) findViewById(R.id.conflit_ok4);
+        conflit_croix4 = (ImageView) findViewById(R.id.conflit_croix4);
+        conflit_bin4 = (ImageView) findViewById(R.id.conflit_bin4);
+        conflit_l5 = (LinearLayout) findViewById(R.id.conflit_l5);
+        conflit_evt5 = (TextView) findViewById(R.id.conflit_evt5);
+        conflit_ok5 = (ImageView) findViewById(R.id.conflit_ok5);
+        conflit_croix5 = (ImageView) findViewById(R.id.conflit_croix5);
+        conflit_bin5 = (ImageView) findViewById(R.id.conflit_bin5);
+        conflit_l6 = (LinearLayout) findViewById(R.id.conflit_l6);
+        conflit_evt6 = (TextView) findViewById(R.id.conflit_evt6);
+        conflit_ok6 = (ImageView) findViewById(R.id.conflit_ok6);
+        conflit_croix6 = (ImageView) findViewById(R.id.conflit_croix6);
+        conflit_bin6 = (ImageView) findViewById(R.id.conflit_bin6);
+        conflit_l7 = (LinearLayout) findViewById(R.id.conflit_l7);
+        conflit_evt7 = (TextView) findViewById(R.id.conflit_evt7);
+        conflit_ok7 = (ImageView) findViewById(R.id.conflit_ok7);
+        conflit_croix7 = (ImageView) findViewById(R.id.conflit_croix7);
+        conflit_bin7 = (ImageView) findViewById(R.id.conflit_bin7);
+        conflit_l8 = (LinearLayout) findViewById(R.id.conflit_l8);
+        conflit_evt8 = (TextView) findViewById(R.id.conflit_evt8);
+        conflit_ok8 = (ImageView) findViewById(R.id.conflit_ok8);
+        conflit_croix8 = (ImageView) findViewById(R.id.conflit_croix8);
+        conflit_bin8 = (ImageView) findViewById(R.id.conflit_bin8);
+        conflit_l9 = (LinearLayout) findViewById(R.id.conflit_l9);
+        conflit_evt9 = (TextView) findViewById(R.id.conflit_evt9);
+        conflit_ok9 = (ImageView) findViewById(R.id.conflit_ok9);
+        conflit_croix9 = (ImageView) findViewById(R.id.conflit_croix9);
+        conflit_bin9 = (ImageView) findViewById(R.id.conflit_bin9);
+        conflit_l10 = (LinearLayout) findViewById(R.id.conflit_l10);
+        conflit_evt10 = (TextView) findViewById(R.id.conflit_evt10);
+        conflit_ok10 = (ImageView) findViewById(R.id.conflit_ok10);
+        conflit_croix10 = (ImageView) findViewById(R.id.conflit_croix10);
+        conflit_bin10 = (ImageView) findViewById(R.id.conflit_bin10);
+
+        conflit_choixEvt = (LinearLayout)findViewById(R.id.conflit_choixEvt);
+        conflit_pageL = (ImageView) findViewById(R.id.conflit_pageL);
+        conflit_affPage = (TextView) findViewById(R.id.conflit_affPage);
+        conflit_pageR = (ImageView) findViewById(R.id.conflit_pageR);
+
     }
 
     void miseEnPage() {
         // Mise en page Layout
-        setHW(layoutMain, 720, 1100);
+        //setHW(layoutMain, 720, 1100);
         //setHW(layoutAjouter, 720, 1100);
         //setHW(layoutCalendrier, 720, 1100);
-        //setHW(layoutConflit, 720, 1100);
+        setHW(layoutConflit, 720, 1100);
         setHW(layoutMenu, 720, 180);
-        //setHW(layoutMain, 720, 0);  // Faire disparaitre Main
+        setHW(layoutMain, 720, 0);  // Faire disparaitre Main
         setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
         setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
-        setHW(layoutConflit, 720, 0);  // Faire disparaitre Conflit
+        //setHW(layoutConflit, 720, 0);  // Faire disparaitre Conflit
 
         setHW(barreMainLayout, 720, 5);
 
@@ -470,6 +590,7 @@ public class MainActivity extends AppCompatActivity {
         setHW(calendrier_pageL, 66, 86);
         setMargins(calendrier_pageL, 0, 0, 14, 0);
         setHW(calendrier_affPage, 66, 86);
+        setTextSize(calendrier_affPage, 20);
         setHW(calendrier_pageR, 66, 86);
         setMargins(calendrier_pageR, 14, 0, 0, 0);
 
@@ -486,6 +607,142 @@ public class MainActivity extends AppCompatActivity {
         setMargins(ajouter_date, 0, 0, 0, 50);
         setHW(ajouter_bouton, 720, 85);
         setTextSize(ajouter_date, 25);
+
+
+
+
+        // Layout Conflit
+        setHW(conflit_enTete, 720, 97);
+        setMargins(conflit_enTete, 0, 0, 0, 40);
+
+        setHW(conflit_l1, 720, 65);
+        setMargins(conflit_l1, 0, 0, 0, 40);
+        setHW(conflit_evt1, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
+        setMargins(conflit_evt1, 0, 0, 10, 0);
+        setTextSize(conflit_evt1, 20);
+        conflit_evt1.setMaxWidth(440*width/720);
+        setHW(conflit_ok1, 65, 65);
+        setMargins(conflit_ok1, 10, 0, 10, 0);
+        setHW(conflit_croix1, 65, 65);
+        setMargins(conflit_croix1, 10, 0, 10, 0);
+        setHW(conflit_bin1, 65, 65);
+        setMargins(conflit_bin1, 10, 0, 0, 0);
+        setHW(conflit_l2, 720, 65);
+        setMargins(conflit_l2, 0, 0, 0, 40);
+        setHW(conflit_evt2, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
+        setMargins(conflit_evt2, 0, 0, 10, 0);
+        setTextSize(conflit_evt2, 20);
+        conflit_evt2.setMaxWidth(440*width/720);
+        setHW(conflit_ok2, 65, 65);
+        setMargins(conflit_ok2, 10, 0, 10, 0);
+        setHW(conflit_croix2, 65, 65);
+        setMargins(conflit_croix2, 10, 0, 10, 0);
+        setHW(conflit_bin2, 65, 65);
+        setMargins(conflit_bin2, 10, 0, 0, 0);
+        setHW(conflit_l3, 720, 65);
+        setMargins(conflit_l3, 0, 0, 0, 40);
+        setHW(conflit_evt3, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
+        setMargins(conflit_evt3, 0, 0, 10, 0);
+        setTextSize(conflit_evt3, 20);
+        conflit_evt3.setMaxWidth(440*width/720);
+        setHW(conflit_ok3, 65, 65);
+        setMargins(conflit_ok3, 10, 0, 10, 0);
+        setHW(conflit_croix3, 65, 65);
+        setMargins(conflit_croix3, 10, 0, 10, 0);
+        setHW(conflit_bin3, 65, 65);
+        setMargins(conflit_bin3, 10, 0, 0, 0);
+        setHW(conflit_l4, 720, 65);
+        setMargins(conflit_l4, 0, 0, 0, 40);
+        setHW(conflit_evt4, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
+        setMargins(conflit_evt4, 0, 0, 10, 0);
+        setTextSize(conflit_evt4, 20);
+        conflit_evt4.setMaxWidth(440*width/720);
+        setHW(conflit_ok4, 65, 65);
+        setMargins(conflit_ok4, 10, 0, 10, 0);
+        setHW(conflit_croix4, 65, 65);
+        setMargins(conflit_croix4, 10, 0, 10, 0);
+        setHW(conflit_bin4, 65, 65);
+        setMargins(conflit_bin4, 10, 0, 0, 0);
+        setHW(conflit_l5, 720, 65);
+        setMargins(conflit_l5, 0, 0, 0, 40);
+        setHW(conflit_evt5, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
+        setMargins(conflit_evt5, 0, 0, 10, 0);
+        setTextSize(conflit_evt5, 20);
+        conflit_evt5.setMaxWidth(440*width/720);
+        setHW(conflit_ok5, 65, 65);
+        setMargins(conflit_ok5, 10, 0, 10, 0);
+        setHW(conflit_croix5, 65, 65);
+        setMargins(conflit_croix5, 10, 0, 10, 0);
+        setHW(conflit_bin5, 65, 65);
+        setMargins(conflit_bin5, 10, 0, 0, 0);
+        setHW(conflit_l6, 720, 65);
+        setMargins(conflit_l6, 0, 0, 0, 40);
+        setHW(conflit_evt6, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
+        setMargins(conflit_evt6, 0, 0, 10, 0);
+        setTextSize(conflit_evt6, 20);
+        conflit_evt6.setMaxWidth(440*width/720);
+        setHW(conflit_ok6, 65, 65);
+        setMargins(conflit_ok6, 10, 0, 10, 0);
+        setHW(conflit_croix6, 65, 65);
+        setMargins(conflit_croix6, 10, 0, 10, 0);
+        setHW(conflit_bin6, 65, 65);
+        setMargins(conflit_bin6, 10, 0, 0, 0);
+        setHW(conflit_l7, 720, 65);
+        setMargins(conflit_l7, 0, 0, 0, 40);
+        setHW(conflit_evt7, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
+        setMargins(conflit_evt7, 0, 0, 10, 0);
+        setTextSize(conflit_evt7, 20);
+        conflit_evt7.setMaxWidth(440*width/720);
+        setHW(conflit_ok7, 65, 65);
+        setMargins(conflit_ok7, 10, 0, 10, 0);
+        setHW(conflit_croix7, 65, 65);
+        setMargins(conflit_croix7, 10, 0, 10, 0);
+        setHW(conflit_bin7, 65, 65);
+        setMargins(conflit_bin7, 10, 0, 0, 0);
+        setHW(conflit_l8, 720, 65);
+        setMargins(conflit_l8, 0, 0, 0, 40);
+        setHW(conflit_evt8, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
+        setMargins(conflit_evt8, 0, 0, 10, 0);
+        setTextSize(conflit_evt8, 20);
+        conflit_evt8.setMaxWidth(440*width/720);
+        setHW(conflit_ok8, 65, 65);
+        setMargins(conflit_ok8, 10, 0, 10, 0);
+        setHW(conflit_croix8, 65, 65);
+        setMargins(conflit_croix8, 10, 0, 10, 0);
+        setHW(conflit_bin8, 65, 65);
+        setMargins(conflit_bin8, 10, 0, 0, 0);
+        setHW(conflit_l9, 720, 65);
+        setMargins(conflit_l9, 0, 0, 0, 40);
+        setHW(conflit_evt9, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
+        setMargins(conflit_evt9, 0, 0, 10, 0);
+        setTextSize(conflit_evt9, 20);
+        conflit_evt9.setMaxWidth(440*width/720);
+        setHW(conflit_ok9, 65, 65);
+        setMargins(conflit_ok9, 10, 0, 10, 0);
+        setHW(conflit_croix9, 65, 65);
+        setMargins(conflit_croix9, 10, 0, 10, 0);
+        setHW(conflit_bin9, 65, 65);
+        setMargins(conflit_bin9, 10, 0, 0, 0);
+        setHW(conflit_l10, 720, 65);
+        setMargins(conflit_l10, 0, 0, 0, 40);
+        setHW(conflit_evt10, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
+        setMargins(conflit_evt10, 0, 0, 10, 0);
+        setTextSize(conflit_evt10, 20);
+        conflit_evt10.setMaxWidth(440*width/720);
+        setHW(conflit_ok10, 65, 65);
+        setMargins(conflit_ok10, 10, 0, 10, 0);
+        setHW(conflit_croix10, 65, 65);
+        setMargins(conflit_croix10, 10, 0, 10, 0);
+        setHW(conflit_bin10, 65, 65);
+        setMargins(conflit_bin10, 10, 0, 0, 0);
+
+        setHW(conflit_choixEvt, 720, 86);
+        setHW(conflit_pageL, 66, 86);
+        setMargins(conflit_pageL, 0, 0, 14, 0);
+        setHW(conflit_affPage, 66, 86);
+        setTextSize(conflit_affPage, 20);
+        setHW(conflit_pageR, 66, 86);
+        setMargins(conflit_pageR, 14, 0, 0, 0);
     }
 
 
