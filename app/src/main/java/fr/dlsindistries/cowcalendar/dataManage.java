@@ -112,7 +112,7 @@ public class dataManage extends SQLiteOpenHelper {
     }
 
 
-    public List<EvtV> readByDateChaleur(String d){
+    public List<EvtV> selectEvtChaleurMois(String d){
         List<EvtV> evts = new ArrayList<>();
 
         String SELECT = "SELECT * FROM " + TABLE_NAME_V + " WHERE " + DATE_CHALEUR + " LIKE '" + d + "-%' AND " + DATE_GESTATION + " IS NULL;";
@@ -127,13 +127,34 @@ public class dataManage extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
         cursor.close();
-        Log.i( TAG, "readByDateChaleur invoked" );
+        Log.i( TAG, "selectEvtChaleurMois invoked" );
 
         return evts;
     }
 
 
-    public List<EvtV> readByDateGestation(String d){
+    public List<EvtV> selectEvtChaleurJour(String d){
+        List<EvtV> evts = new ArrayList<>();
+
+        String SELECT = "SELECT * FROM " + TABLE_NAME_V + " WHERE " + DATE_CHALEUR + " LIKE '" + d + "' AND " + DATE_GESTATION + " IS NULL;";
+
+        Cursor cursor = this.getReadableDatabase().rawQuery( SELECT, null );
+
+        cursor.moveToFirst();
+
+        while( ! cursor.isAfterLast() ) {
+            EvtV evt = new EvtV( cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+            evts.add(evt);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        Log.i( TAG, "selectEvtChaleurMois invoked" );
+
+        return evts;
+    }
+
+
+    public List<EvtV> selectEvtGestationMois(String d){
         List<EvtV> evts = new ArrayList<>();
 
         String SELECT = "SELECT * FROM " + TABLE_NAME_V + " WHERE " + DATE_GESTATION + " LIKE '" + d + "-%';";
@@ -149,7 +170,29 @@ public class dataManage extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
         cursor.close();
-        Log.i( TAG, "readByDateGestation invoked" );
+        Log.i( TAG, "selectEvtGestationMois invoked" );
+
+        return evts;
+    }
+
+
+    public List<EvtV> selectEvtGestationJour(String d){
+        List<EvtV> evts = new ArrayList<>();
+
+        String SELECT = "SELECT * FROM " + TABLE_NAME_V + " WHERE " + DATE_GESTATION + " LIKE '" + d + "';";
+
+
+        Cursor cursor = this.getReadableDatabase().rawQuery( SELECT, null );
+
+        cursor.moveToFirst();
+
+        while( ! cursor.isAfterLast() ) {
+            EvtV evt = new EvtV( cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+            evts.add(evt);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        Log.i( TAG, "selectEvtGestationMois invoked" );
 
         return evts;
     }

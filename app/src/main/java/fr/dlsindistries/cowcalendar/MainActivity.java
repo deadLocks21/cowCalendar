@@ -1,10 +1,11 @@
 package fr.dlsindistries.cowcalendar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
-import android.nfc.Tag;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Debug;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -31,14 +32,10 @@ public class MainActivity extends AppCompatActivity {
     private ImageView barreMainLayout = null;
 
 
-
-
     // Variables des boutons du menu
     private ImageView btAjouter = null;
     private ImageView btCalendrier = null;
     private ImageView btConflit = null;
-
-
 
 
     // Menu Calendrier
@@ -126,8 +123,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageView calendrier_pageR = null;
 
 
-
-
     // Layout Ajouter
     private ImageView ajouter_enTete = null;
     private EditText ajouter_champ = null;
@@ -136,8 +131,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageView ajouter_notif_evt_vide = null;
     private ImageView ajouter_notif_car_inc = null;
     private TextView ajouter_notif_deja_existant = null;
-
-
 
 
     // Layout Conflit
@@ -200,11 +193,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView conflit_pageR = null;
 
 
-
-
-
     // Base de données
-    private dataManage dataManager = new dataManage( this );
+    private dataManage dataManager = new dataManage(this);
 
     // Variable de gestion du temps
     private Calendar dateCalendrier = Calendar.getInstance();  // Variable de type Calendar contenant la date du calendrier, initialisé à la date du jour.
@@ -212,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
     private SimpleDateFormat dateSQL = new SimpleDateFormat("yyyy-MM-dd");
     private SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
     private SimpleDateFormat sdfMonth = new SimpleDateFormat("MM");
-    private SimpleDateFormat sdfDay = new SimpleDateFormat("MM");
+    private SimpleDateFormat sdfDay = new SimpleDateFormat("dd");
 
     // Constantes
     private String TAG = "DEBUG_";
@@ -230,18 +220,14 @@ public class MainActivity extends AppCompatActivity {
     private String NOM_MOIS_12 = "Décembre";
 
 
-
     // Variables
     private Integer width;
     private Integer height;
-    private String nomEvt;
-    private String numEvt;
-    private String cOUg;
-    private List<String> evtAjh;
+    private String nomEvt = "";
+    private String numEvt = "0";
+    private String cOUg = "";
+    private List<String> evtAjh = new ArrayList<String>();
     private List<List<String>> cases = new ArrayList<List<String>>();
-
-
-
 
 
     @Override
@@ -258,11 +244,6 @@ public class MainActivity extends AppCompatActivity {
 
         initListCases();
 
-        List<EvtV> evts = dataManager.readAll();
-
-        for ( EvtV evt : evts ) {
-            Log.i(TAG, evt.info());
-        }
 
 
         btAjouter.setOnClickListener(new View.OnClickListener() {
@@ -293,46 +274,80 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        calendrier_moisL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    OnClickMoisL();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        calendrier_moisR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    OnClickMoisR();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        calendrier_bouton_chaleur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    OnClickChaleur();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        calendrier_bouton_gestation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    OnClickGestation();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
-
-
 
 
     // Initialisation des graphismes
     void initPage() {
         // Initialisation Layout
-        layoutMain = (LinearLayout)findViewById(R.id.layoutMain);
-        layoutAjouter = (LinearLayout)findViewById(R.id.layoutAjouter);
-        layoutCalendrier = (LinearLayout)findViewById(R.id.layoutCalendrier);
-        layoutConflit = (LinearLayout)findViewById(R.id.layoutConflit);
-        layoutMenu = (LinearLayout)findViewById(R.id.layoutMenu);
+        layoutMain = (LinearLayout) findViewById(R.id.layoutMain);
+        layoutAjouter = (LinearLayout) findViewById(R.id.layoutAjouter);
+        layoutCalendrier = (LinearLayout) findViewById(R.id.layoutCalendrier);
+        layoutConflit = (LinearLayout) findViewById(R.id.layoutConflit);
+        layoutMenu = (LinearLayout) findViewById(R.id.layoutMenu);
 
-        barreMainLayout = (ImageView)findViewById(R.id.barreMainLayout);
-
-
+        barreMainLayout = (ImageView) findViewById(R.id.barreMainLayout);
 
 
         // Initialisation bouton du menu
-        btAjouter = (ImageView)findViewById(R.id.btAjouter);
-        btCalendrier = (ImageView)findViewById(R.id.btCalendrier);
-        btConflit = (ImageView)findViewById(R.id.btConflit);
-
-
+        btAjouter = (ImageView) findViewById(R.id.btAjouter);
+        btCalendrier = (ImageView) findViewById(R.id.btCalendrier);
+        btConflit = (ImageView) findViewById(R.id.btConflit);
 
 
         // Menu Calendrier
-        calendrierEnTete = (ImageView)findViewById(R.id.calendrierEnTete);
-        calendrier_fond = (LinearLayout)findViewById(R.id.calendrier_fond);
+        calendrierEnTete = (ImageView) findViewById(R.id.calendrierEnTete);
+        calendrier_fond = (LinearLayout) findViewById(R.id.calendrier_fond);
 
-        calendrier_choixCG = (LinearLayout)findViewById(R.id.calendrier_choixCG);
-        calendrier_bouton_chaleur = (ImageView)findViewById(R.id.calendrier_chaleur);
-        calendrier_bouton_gestation = (ImageView)findViewById(R.id.calendrier_gestation);
+        calendrier_choixCG = (LinearLayout) findViewById(R.id.calendrier_choixCG);
+        calendrier_bouton_chaleur = (ImageView) findViewById(R.id.calendrier_chaleur);
+        calendrier_bouton_gestation = (ImageView) findViewById(R.id.calendrier_gestation);
 
         // En-tête
         calendrier_enTete = (LinearLayout) findViewById(R.id.calendrier_enTete);
-        calendrier_moisL = (ImageView)findViewById(R.id.calendrier_moisL);
-        calendrier_nomDuMois = (TextView)findViewById(R.id.calendrier_nomDuMois);
-        calendrier_moisR = (ImageView)findViewById(R.id.calendrier_moisR);
+        calendrier_moisL = (ImageView) findViewById(R.id.calendrier_moisL);
+        calendrier_nomDuMois = (TextView) findViewById(R.id.calendrier_nomDuMois);
+        calendrier_moisR = (ImageView) findViewById(R.id.calendrier_moisR);
 
         // Lettres
         calendrier_lettres = (LinearLayout) findViewById(R.id.calendrier_lettres);
@@ -344,7 +359,7 @@ public class MainActivity extends AppCompatActivity {
         calendrier_samedi = (ImageView) findViewById(R.id.calendrier_samedi);
         calendrier_dimanche = (ImageView) findViewById(R.id.calendrier_dimanche);
 
-        calendrier_cases = (LinearLayout)findViewById(R.id.calendrier_cases);
+        calendrier_cases = (LinearLayout) findViewById(R.id.calendrier_cases);
 
         //Lignes
         calendrier_l1 = (LinearLayout) findViewById(R.id.calendrier_l1);
@@ -399,30 +414,25 @@ public class MainActivity extends AppCompatActivity {
         calendrier_c42 = (TextView) findViewById(R.id.calendrier_c42);
 
         // Affichage des évènements
-        calendrier_nomDeEvt = (TextView)findViewById(R.id.calendrier_nomDeEvt);
-        calendrier_choixEvt = (LinearLayout)findViewById(R.id.calendrier_choixEvt);
+        calendrier_nomDeEvt = (TextView) findViewById(R.id.calendrier_nomDeEvt);
+        calendrier_choixEvt = (LinearLayout) findViewById(R.id.calendrier_choixEvt);
         calendrier_pageL = (ImageView) findViewById(R.id.calendrier_pageL);
         calendrier_affPage = (TextView) findViewById(R.id.calendrier_affPage);
         calendrier_pageR = (ImageView) findViewById(R.id.calendrier_pageR);
 
 
-
-
         // Layout Ajouter
-        ajouter_enTete = (ImageView)findViewById(R.id.ajouter_enTete);
-        ajouter_champ = (EditText)findViewById(R.id.ajouter_champ);
-        ajouter_date = (TextView)findViewById(R.id.ajouter_date);
-        ajouter_bouton = (ImageView)findViewById(R.id.ajouter_bouton);
-        ajouter_notif_evt_vide = (ImageView)findViewById(R.id.ajouter_notif_evt_vide);
-        ajouter_notif_car_inc = (ImageView)findViewById(R.id.ajouter_notif_car_inc);
-        ajouter_notif_deja_existant = (TextView)findViewById(R.id.ajouter_notif_deja_existant);
-
-
-
+        ajouter_enTete = (ImageView) findViewById(R.id.ajouter_enTete);
+        ajouter_champ = (EditText) findViewById(R.id.ajouter_champ);
+        ajouter_date = (TextView) findViewById(R.id.ajouter_date);
+        ajouter_bouton = (ImageView) findViewById(R.id.ajouter_bouton);
+        ajouter_notif_evt_vide = (ImageView) findViewById(R.id.ajouter_notif_evt_vide);
+        ajouter_notif_car_inc = (ImageView) findViewById(R.id.ajouter_notif_car_inc);
+        ajouter_notif_deja_existant = (TextView) findViewById(R.id.ajouter_notif_deja_existant);
 
 
         // Layout Conflit
-        conflit_enTete = (ImageView)findViewById(R.id.conflit_enTete);
+        conflit_enTete = (ImageView) findViewById(R.id.conflit_enTete);
 
         conflit_l1 = (LinearLayout) findViewById(R.id.conflit_l1);
         conflit_evt1 = (TextView) findViewById(R.id.conflit_evt1);
@@ -475,13 +485,12 @@ public class MainActivity extends AppCompatActivity {
         conflit_croix10 = (ImageView) findViewById(R.id.conflit_croix10);
         conflit_bin10 = (ImageView) findViewById(R.id.conflit_bin10);
 
-        conflit_choixEvt = (LinearLayout)findViewById(R.id.conflit_choixEvt);
+        conflit_choixEvt = (LinearLayout) findViewById(R.id.conflit_choixEvt);
         conflit_pageL = (ImageView) findViewById(R.id.conflit_pageL);
         conflit_affPage = (TextView) findViewById(R.id.conflit_affPage);
         conflit_pageR = (ImageView) findViewById(R.id.conflit_pageR);
 
     }
-
     void miseEnPage() {
         // Mise en page Layout
         //setHW(layoutMain, 720, 1100);
@@ -497,17 +506,13 @@ public class MainActivity extends AppCompatActivity {
         setHW(barreMainLayout, 720, 5);
 
 
-
-
         // Mise en page bouton menu
         setHW(btAjouter, 150, 150);
-        setMargins(btAjouter, 67,22, 68,0);
+        setMargins(btAjouter, 67, 22, 68, 0);
         setHW(btCalendrier, 150, 150);
         setMargins(btCalendrier, 0, 22, 0, 0);
         setHW(btConflit, 150, 150);
-        setMargins(btConflit, 68,22, 67,0);
-
-
+        setMargins(btConflit, 68, 22, 67, 0);
 
 
         // Menu Calendrier
@@ -704,8 +709,6 @@ public class MainActivity extends AppCompatActivity {
         setMargins(calendrier_pageR, 14, 0, 0, 0);
 
 
-
-
         // Layout Ajouter
         setHW(ajouter_enTete, 720, 97);
         setMargins(ajouter_enTete, 0, 0, 0, 68);
@@ -724,8 +727,6 @@ public class MainActivity extends AppCompatActivity {
         setTextSize(ajouter_notif_deja_existant, 25);
 
 
-
-
         // Layout Conflit
         setHW(conflit_enTete, 720, 97);
         setMargins(conflit_enTete, 0, 0, 0, 40);
@@ -735,7 +736,7 @@ public class MainActivity extends AppCompatActivity {
         setHW(conflit_evt1, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
         setMargins(conflit_evt1, 0, 0, 10, 0);
         setTextSize(conflit_evt1, 20);
-        conflit_evt1.setMaxWidth(440*width/720);
+        conflit_evt1.setMaxWidth(440 * width / 720);
         setHW(conflit_ok1, 65, 65);
         setMargins(conflit_ok1, 10, 0, 10, 0);
         setHW(conflit_croix1, 65, 65);
@@ -747,7 +748,7 @@ public class MainActivity extends AppCompatActivity {
         setHW(conflit_evt2, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
         setMargins(conflit_evt2, 0, 0, 10, 0);
         setTextSize(conflit_evt2, 20);
-        conflit_evt2.setMaxWidth(440*width/720);
+        conflit_evt2.setMaxWidth(440 * width / 720);
         setHW(conflit_ok2, 65, 65);
         setMargins(conflit_ok2, 10, 0, 10, 0);
         setHW(conflit_croix2, 65, 65);
@@ -759,7 +760,7 @@ public class MainActivity extends AppCompatActivity {
         setHW(conflit_evt3, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
         setMargins(conflit_evt3, 0, 0, 10, 0);
         setTextSize(conflit_evt3, 20);
-        conflit_evt3.setMaxWidth(440*width/720);
+        conflit_evt3.setMaxWidth(440 * width / 720);
         setHW(conflit_ok3, 65, 65);
         setMargins(conflit_ok3, 10, 0, 10, 0);
         setHW(conflit_croix3, 65, 65);
@@ -771,7 +772,7 @@ public class MainActivity extends AppCompatActivity {
         setHW(conflit_evt4, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
         setMargins(conflit_evt4, 0, 0, 10, 0);
         setTextSize(conflit_evt4, 20);
-        conflit_evt4.setMaxWidth(440*width/720);
+        conflit_evt4.setMaxWidth(440 * width / 720);
         setHW(conflit_ok4, 65, 65);
         setMargins(conflit_ok4, 10, 0, 10, 0);
         setHW(conflit_croix4, 65, 65);
@@ -783,7 +784,7 @@ public class MainActivity extends AppCompatActivity {
         setHW(conflit_evt5, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
         setMargins(conflit_evt5, 0, 0, 10, 0);
         setTextSize(conflit_evt5, 20);
-        conflit_evt5.setMaxWidth(440*width/720);
+        conflit_evt5.setMaxWidth(440 * width / 720);
         setHW(conflit_ok5, 65, 65);
         setMargins(conflit_ok5, 10, 0, 10, 0);
         setHW(conflit_croix5, 65, 65);
@@ -795,7 +796,7 @@ public class MainActivity extends AppCompatActivity {
         setHW(conflit_evt6, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
         setMargins(conflit_evt6, 0, 0, 10, 0);
         setTextSize(conflit_evt6, 20);
-        conflit_evt6.setMaxWidth(440*width/720);
+        conflit_evt6.setMaxWidth(440 * width / 720);
         setHW(conflit_ok6, 65, 65);
         setMargins(conflit_ok6, 10, 0, 10, 0);
         setHW(conflit_croix6, 65, 65);
@@ -807,7 +808,7 @@ public class MainActivity extends AppCompatActivity {
         setHW(conflit_evt7, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
         setMargins(conflit_evt7, 0, 0, 10, 0);
         setTextSize(conflit_evt7, 20);
-        conflit_evt7.setMaxWidth(440*width/720);
+        conflit_evt7.setMaxWidth(440 * width / 720);
         setHW(conflit_ok7, 65, 65);
         setMargins(conflit_ok7, 10, 0, 10, 0);
         setHW(conflit_croix7, 65, 65);
@@ -819,7 +820,7 @@ public class MainActivity extends AppCompatActivity {
         setHW(conflit_evt8, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
         setMargins(conflit_evt8, 0, 0, 10, 0);
         setTextSize(conflit_evt8, 20);
-        conflit_evt8.setMaxWidth(440*width/720);
+        conflit_evt8.setMaxWidth(440 * width / 720);
         setHW(conflit_ok8, 65, 65);
         setMargins(conflit_ok8, 10, 0, 10, 0);
         setHW(conflit_croix8, 65, 65);
@@ -831,7 +832,7 @@ public class MainActivity extends AppCompatActivity {
         setHW(conflit_evt9, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
         setMargins(conflit_evt9, 0, 0, 10, 0);
         setTextSize(conflit_evt9, 20);
-        conflit_evt9.setMaxWidth(440*width/720);
+        conflit_evt9.setMaxWidth(440 * width / 720);
         setHW(conflit_ok9, 65, 65);
         setMargins(conflit_ok9, 10, 0, 10, 0);
         setHW(conflit_croix9, 65, 65);
@@ -843,7 +844,7 @@ public class MainActivity extends AppCompatActivity {
         setHW(conflit_evt10, ViewGroup.LayoutParams.WRAP_CONTENT, 65);
         setMargins(conflit_evt10, 0, 0, 10, 0);
         setTextSize(conflit_evt10, 20);
-        conflit_evt10.setMaxWidth(440*width/720);
+        conflit_evt10.setMaxWidth(440 * width / 720);
         setHW(conflit_ok10, 65, 65);
         setMargins(conflit_ok10, 10, 0, 10, 0);
         setHW(conflit_croix10, 65, 65);
@@ -863,10 +864,10 @@ public class MainActivity extends AppCompatActivity {
 
     // Initialisation de la List cases
     void initListCases() {
-        for (int i = 1; i<43; i++) {
+        for (int i = 1; i < 43; i++) {
             List<String> uneCase = new ArrayList<String>();
 
-            uneCase.add(String.valueOf(i));
+            uneCase.add("0");
             uneCase.add("null");
 
             cases.add(uneCase);
@@ -884,9 +885,1132 @@ public class MainActivity extends AppCompatActivity {
     void razChampAjouter() {
         setText(ajouter_champ, "");
     }
+    void joursDuMois() {
+        razJoursMois();
+
+        Calendar ajh = Calendar.getInstance();
+
+        ajh.set(Integer.parseInt(sdfYear.format(dateCalendrier.getTime())), Integer.parseInt(sdfMonth.format(dateCalendrier.getTime()))-1, Integer.parseInt(sdfDay.format(dateCalendrier.getTime())));
+
+        SimpleDateFormat Jour = new SimpleDateFormat("dd");
+
+        Integer y = ajh.get(Calendar.YEAR);
+        Integer m = ajh.get(Calendar.MONTH);
+
+        ajh.set(y, m, 1);
+        Integer pJourDuMois  = ajh.get(Calendar.DAY_OF_WEEK);
+
+        Integer numberOfDaysInThisMonth = ajh.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        List<String> uneCase = new ArrayList<String>();
+
+        if (pJourDuMois == 2)
+        {
+            uneCase = cases.get(0);
+            uneCase.set(0, "01");
+            cases.set(0, uneCase);
+            uneCase = cases.get(1);
+            uneCase.set(0, "02");
+            cases.set(1, uneCase);
+            uneCase = cases.get(2);
+            uneCase.set(0, "03");
+            cases.set(2, uneCase);
+            uneCase = cases.get(3);
+            uneCase.set(0, "04");
+            cases.set(3, uneCase);
+            uneCase = cases.get(4);
+            uneCase.set(0, "05");
+            cases.set(4, uneCase);
+            uneCase = cases.get(5);
+            uneCase.set(0, "06");
+            cases.set(5, uneCase);
+            uneCase = cases.get(6);
+            uneCase.set(0, "07");
+            cases.set(6, uneCase);
+            uneCase = cases.get(7);
+            uneCase.set(0, "08");
+            cases.set(7, uneCase);
+            uneCase = cases.get(8);
+            uneCase.set(0, "09");
+            cases.set(8, uneCase);
+            uneCase = cases.get(9);
+            uneCase.set(0, "10");
+            cases.set(9, uneCase);
+            uneCase = cases.get(10);
+            uneCase.set(0, "11");
+            cases.set(10, uneCase);
+            uneCase = cases.get(11);
+            uneCase.set(0, "12");
+            cases.set(11, uneCase);
+            uneCase = cases.get(12);
+            uneCase.set(0, "13");
+            cases.set(12, uneCase);
+            uneCase = cases.get(13);
+            uneCase.set(0, "14");
+            cases.set(13, uneCase);
+            uneCase = cases.get(14);
+            uneCase.set(0, "15");
+            cases.set(14, uneCase);
+            uneCase = cases.get(15);
+            uneCase.set(0, "16");
+            cases.set(15, uneCase);
+            uneCase = cases.get(16);
+            uneCase.set(0, "17");
+            cases.set(16, uneCase);
+            uneCase = cases.get(17);
+            uneCase.set(0, "18");
+            cases.set(17, uneCase);
+            uneCase = cases.get(18);
+            uneCase.set(0, "19");
+            cases.set(18, uneCase);
+            uneCase = cases.get(19);
+            uneCase.set(0, "20");
+            cases.set(19, uneCase);
+            uneCase = cases.get(20);
+            uneCase.set(0, "21");
+            cases.set(20, uneCase);
+            uneCase = cases.get(21);
+            uneCase.set(0, "22");
+            cases.set(21, uneCase);
+            uneCase = cases.get(22);
+            uneCase.set(0, "23");
+            cases.set(22, uneCase);
+            uneCase = cases.get(23);
+            uneCase.set(0, "24");
+            cases.set(23, uneCase);
+            uneCase = cases.get(24);
+            uneCase.set(0, "25");
+            cases.set(24, uneCase);
+            uneCase = cases.get(25);
+            uneCase.set(0, "26");
+            cases.set(25, uneCase);
+            uneCase = cases.get(26);
+            uneCase.set(0, "27");
+            cases.set(26, uneCase);
+            uneCase = cases.get(27);
+            uneCase.set(0, "28");
+            cases.set(27, uneCase);
+
+            if (numberOfDaysInThisMonth > 28)
+            {
+                uneCase = cases.get(28);
+                uneCase.set(0, "29");
+                cases.set(28, uneCase);
+            }
+
+            if (numberOfDaysInThisMonth > 29)
+            {
+                uneCase = cases.get(29);
+                uneCase.set(0, "30");
+                cases.set(29, uneCase);
+            }
+            if (numberOfDaysInThisMonth > 30)
+            {
+                uneCase = cases.get(30);
+                uneCase.set(0, "31");
+                cases.set(30, uneCase);
+            }
+        }
 
 
 
+        if (pJourDuMois == 3)
+        {
+            uneCase = cases.get(1);
+            uneCase.set(0, "01");
+            cases.set(1, uneCase);
+            uneCase = cases.get(2);
+            uneCase.set(0, "02");
+            cases.set(2, uneCase);
+            uneCase = cases.get(3);
+            uneCase.set(0, "03");
+            cases.set(3, uneCase);
+            uneCase = cases.get(4);
+            uneCase.set(0, "04");
+            cases.set(4, uneCase);
+            uneCase = cases.get(5);
+            uneCase.set(0, "05");
+            cases.set(5, uneCase);
+            uneCase = cases.get(6);
+            uneCase.set(0, "06");
+            cases.set(6, uneCase);
+            uneCase = cases.get(7);
+            uneCase.set(0, "07");
+            cases.set(7, uneCase);
+            uneCase = cases.get(8);
+            uneCase.set(0, "08");
+            cases.set(8, uneCase);
+            uneCase = cases.get(9);
+            uneCase.set(0, "09");
+            cases.set(9, uneCase);
+            uneCase = cases.get(10);
+            uneCase.set(0, "10");
+            cases.set(10, uneCase);
+            uneCase = cases.get(11);
+            uneCase.set(0, "11");
+            cases.set(11, uneCase);
+            uneCase = cases.get(12);
+            uneCase.set(0, "12");
+            cases.set(12, uneCase);
+            uneCase = cases.get(13);
+            uneCase.set(0, "13");
+            cases.set(13, uneCase);
+            uneCase = cases.get(14);
+            uneCase.set(0, "14");
+            cases.set(14, uneCase);
+            uneCase = cases.get(15);
+            uneCase.set(0, "15");
+            cases.set(15, uneCase);
+            uneCase = cases.get(16);
+            uneCase.set(0, "16");
+            cases.set(16, uneCase);
+            uneCase = cases.get(17);
+            uneCase.set(0, "17");
+            cases.set(17, uneCase);
+            uneCase = cases.get(18);
+            uneCase.set(0, "18");
+            cases.set(18, uneCase);
+            uneCase = cases.get(19);
+            uneCase.set(0, "19");
+            cases.set(19, uneCase);
+            uneCase = cases.get(20);
+            uneCase.set(0, "20");
+            cases.set(20, uneCase);
+            uneCase = cases.get(21);
+            uneCase.set(0, "21");
+            cases.set(21, uneCase);
+            uneCase = cases.get(22);
+            uneCase.set(0, "22");
+            cases.set(22, uneCase);
+            uneCase = cases.get(23);
+            uneCase.set(0, "23");
+            cases.set(23, uneCase);
+            uneCase = cases.get(24);
+            uneCase.set(0, "24");
+            cases.set(24, uneCase);
+            uneCase = cases.get(25);
+            uneCase.set(0, "25");
+            cases.set(25, uneCase);
+            uneCase = cases.get(26);
+            uneCase.set(0, "26");
+            cases.set(26, uneCase);
+            uneCase = cases.get(27);
+            uneCase.set(0, "27");
+            cases.set(27, uneCase);
+            uneCase = cases.get(28);
+            uneCase.set(0, "28");
+            cases.set(28, uneCase);
+
+            if (numberOfDaysInThisMonth > 28)
+            {
+                uneCase = cases.get(29);
+                uneCase.set(0, "29");
+                cases.set(29, uneCase);
+            }
+
+            if (numberOfDaysInThisMonth > 29)
+            {
+                uneCase = cases.get(30);
+                uneCase.set(0, "30");
+                cases.set(30, uneCase);
+            }
+            if (numberOfDaysInThisMonth > 30)
+            {
+                uneCase = cases.get(31);
+                uneCase.set(0, "31");
+                cases.set(31, uneCase);
+            }
+        }
+
+
+
+        if (pJourDuMois == 4)
+        {
+            uneCase = cases.get(2);
+            uneCase.set(0, "01");
+            cases.set(2, uneCase);
+            uneCase = cases.get(3);
+            uneCase.set(0, "02");
+            cases.set(3, uneCase);
+            uneCase = cases.get(4);
+            uneCase.set(0, "03");
+            cases.set(4, uneCase);
+            uneCase = cases.get(5);
+            uneCase.set(0, "04");
+            cases.set(5, uneCase);
+            uneCase = cases.get(6);
+            uneCase.set(0, "05");
+            cases.set(6, uneCase);
+            uneCase = cases.get(7);
+            uneCase.set(0, "06");
+            cases.set(7, uneCase);
+            uneCase = cases.get(8);
+            uneCase.set(0, "07");
+            cases.set(8, uneCase);
+            uneCase = cases.get(9);
+            uneCase.set(0, "08");
+            cases.set(9, uneCase);
+            uneCase = cases.get(10);
+            uneCase.set(0, "09");
+            cases.set(10, uneCase);
+            uneCase = cases.get(11);
+            uneCase.set(0, "10");
+            cases.set(11, uneCase);
+            uneCase = cases.get(12);
+            uneCase.set(0, "11");
+            cases.set(12, uneCase);
+            uneCase = cases.get(13);
+            uneCase.set(0, "12");
+            cases.set(13, uneCase);
+            uneCase = cases.get(14);
+            uneCase.set(0, "13");
+            cases.set(14, uneCase);
+            uneCase = cases.get(15);
+            uneCase.set(0, "14");
+            cases.set(15, uneCase);
+            uneCase = cases.get(16);
+            uneCase.set(0, "15");
+            cases.set(16, uneCase);
+            uneCase = cases.get(17);
+            uneCase.set(0, "16");
+            cases.set(17, uneCase);
+            uneCase = cases.get(18);
+            uneCase.set(0, "17");
+            cases.set(18, uneCase);
+            uneCase = cases.get(19);
+            uneCase.set(0, "18");
+            cases.set(19, uneCase);
+            uneCase = cases.get(20);
+            uneCase.set(0, "19");
+            cases.set(20, uneCase);
+            uneCase = cases.get(21);
+            uneCase.set(0, "20");
+            cases.set(21, uneCase);
+            uneCase = cases.get(22);
+            uneCase.set(0, "21");
+            cases.set(22, uneCase);
+            uneCase = cases.get(23);
+            uneCase.set(0, "22");
+            cases.set(23, uneCase);
+            uneCase = cases.get(24);
+            uneCase.set(0, "23");
+            cases.set(24, uneCase);
+            uneCase = cases.get(25);
+            uneCase.set(0, "24");
+            cases.set(25, uneCase);
+            uneCase = cases.get(26);
+            uneCase.set(0, "25");
+            cases.set(26, uneCase);
+            uneCase = cases.get(27);
+            uneCase.set(0, "26");
+            cases.set(27, uneCase);
+            uneCase = cases.get(28);
+            uneCase.set(0, "27");
+            cases.set(28, uneCase);
+            uneCase = cases.get(29);
+            uneCase.set(0, "28");
+            cases.set(29, uneCase);
+
+            if (numberOfDaysInThisMonth > 28)
+            {
+                uneCase = cases.get(30);
+                uneCase.set(0, "29");
+                cases.set(30, uneCase);
+            }
+
+            if (numberOfDaysInThisMonth > 29)
+            {
+                uneCase = cases.get(31);
+                uneCase.set(0, "30");
+                cases.set(31, uneCase);
+            }
+            if (numberOfDaysInThisMonth > 30)
+            {
+                uneCase = cases.get(32);
+                uneCase.set(0, "31");
+                cases.set(32, uneCase);
+            }
+        }
+
+
+
+        if (pJourDuMois == 5)
+        {
+            uneCase = cases.get(3);
+            uneCase.set(0, "01");
+            cases.set(3, uneCase);
+            uneCase = cases.get(4);
+            uneCase.set(0, "02");
+            cases.set(4, uneCase);
+            uneCase = cases.get(5);
+            uneCase.set(0, "03");
+            cases.set(5, uneCase);
+            uneCase = cases.get(6);
+            uneCase.set(0, "04");
+            cases.set(6, uneCase);
+            uneCase = cases.get(7);
+            uneCase.set(0, "05");
+            cases.set(7, uneCase);
+            uneCase = cases.get(8);
+            uneCase.set(0, "06");
+            cases.set(8, uneCase);
+            uneCase = cases.get(9);
+            uneCase.set(0, "07");
+            cases.set(9, uneCase);
+            uneCase = cases.get(10);
+            uneCase.set(0, "08");
+            cases.set(10, uneCase);
+            uneCase = cases.get(11);
+            uneCase.set(0, "09");
+            cases.set(11, uneCase);
+            uneCase = cases.get(12);
+            uneCase.set(0, "10");
+            cases.set(12, uneCase);
+            uneCase = cases.get(13);
+            uneCase.set(0, "11");
+            cases.set(13, uneCase);
+            uneCase = cases.get(14);
+            uneCase.set(0, "12");
+            cases.set(14, uneCase);
+            uneCase = cases.get(15);
+            uneCase.set(0, "13");
+            cases.set(15, uneCase);
+            uneCase = cases.get(16);
+            uneCase.set(0, "14");
+            cases.set(16, uneCase);
+            uneCase = cases.get(17);
+            uneCase.set(0, "15");
+            cases.set(17, uneCase);
+            uneCase = cases.get(18);
+            uneCase.set(0, "16");
+            cases.set(18, uneCase);
+            uneCase = cases.get(19);
+            uneCase.set(0, "17");
+            cases.set(19, uneCase);
+            uneCase = cases.get(20);
+            uneCase.set(0, "18");
+            cases.set(20, uneCase);
+            uneCase = cases.get(21);
+            uneCase.set(0, "19");
+            cases.set(21, uneCase);
+            uneCase = cases.get(22);
+            uneCase.set(0, "20");
+            cases.set(22, uneCase);
+            uneCase = cases.get(23);
+            uneCase.set(0, "21");
+            cases.set(23, uneCase);
+            uneCase = cases.get(24);
+            uneCase.set(0, "22");
+            cases.set(24, uneCase);
+            uneCase = cases.get(25);
+            uneCase.set(0, "23");
+            cases.set(25, uneCase);
+            uneCase = cases.get(26);
+            uneCase.set(0, "24");
+            cases.set(26, uneCase);
+            uneCase = cases.get(27);
+            uneCase.set(0, "25");
+            cases.set(27, uneCase);
+            uneCase = cases.get(28);
+            uneCase.set(0, "26");
+            cases.set(28, uneCase);
+            uneCase = cases.get(29);
+            uneCase.set(0, "27");
+            cases.set(29, uneCase);
+            uneCase = cases.get(30);
+            uneCase.set(0, "28");
+            cases.set(30, uneCase);
+
+            if (numberOfDaysInThisMonth > 28)
+            {
+                uneCase = cases.get(31);
+                uneCase.set(0, "29");
+                cases.set(31, uneCase);
+            }
+
+            if (numberOfDaysInThisMonth > 29)
+            {
+                uneCase = cases.get(32);
+                uneCase.set(0, "30");
+                cases.set(32, uneCase);
+            }
+            if (numberOfDaysInThisMonth > 30)
+            {
+                uneCase = cases.get(33);
+                uneCase.set(0, "31");
+                cases.set(33, uneCase);
+            }
+        }
+
+
+
+        if (pJourDuMois == 6)
+        {
+            uneCase = cases.get(4);
+            uneCase.set(0, "01");
+            cases.set(4, uneCase);
+            uneCase = cases.get(5);
+            uneCase.set(0, "02");
+            cases.set(5, uneCase);
+            uneCase = cases.get(6);
+            uneCase.set(0, "03");
+            cases.set(6, uneCase);
+            uneCase = cases.get(7);
+            uneCase.set(0, "04");
+            cases.set(7, uneCase);
+            uneCase = cases.get(8);
+            uneCase.set(0, "05");
+            cases.set(8, uneCase);
+            uneCase = cases.get(9);
+            uneCase.set(0, "06");
+            cases.set(9, uneCase);
+            uneCase = cases.get(10);
+            uneCase.set(0, "07");
+            cases.set(10, uneCase);
+            uneCase = cases.get(11);
+            uneCase.set(0, "08");
+            cases.set(11, uneCase);
+            uneCase = cases.get(12);
+            uneCase.set(0, "09");
+            cases.set(12, uneCase);
+            uneCase = cases.get(13);
+            uneCase.set(0, "10");
+            cases.set(13, uneCase);
+            uneCase = cases.get(14);
+            uneCase.set(0, "11");
+            cases.set(14, uneCase);
+            uneCase = cases.get(15);
+            uneCase.set(0, "12");
+            cases.set(15, uneCase);
+            uneCase = cases.get(16);
+            uneCase.set(0, "13");
+            cases.set(16, uneCase);
+            uneCase = cases.get(17);
+            uneCase.set(0, "14");
+            cases.set(17, uneCase);
+            uneCase = cases.get(18);
+            uneCase.set(0, "15");
+            cases.set(18, uneCase);
+            uneCase = cases.get(19);
+            uneCase.set(0, "16");
+            cases.set(19, uneCase);
+            uneCase = cases.get(20);
+            uneCase.set(0, "17");
+            cases.set(20, uneCase);
+            uneCase = cases.get(21);
+            uneCase.set(0, "18");
+            cases.set(21, uneCase);
+            uneCase = cases.get(22);
+            uneCase.set(0, "19");
+            cases.set(22, uneCase);
+            uneCase = cases.get(23);
+            uneCase.set(0, "20");
+            cases.set(23, uneCase);
+            uneCase = cases.get(24);
+            uneCase.set(0, "21");
+            cases.set(24, uneCase);
+            uneCase = cases.get(25);
+            uneCase.set(0, "22");
+            cases.set(25, uneCase);
+            uneCase = cases.get(26);
+            uneCase.set(0, "23");
+            cases.set(26, uneCase);
+            uneCase = cases.get(27);
+            uneCase.set(0, "24");
+            cases.set(27, uneCase);
+            uneCase = cases.get(28);
+            uneCase.set(0, "25");
+            cases.set(28, uneCase);
+            uneCase = cases.get(29);
+            uneCase.set(0, "26");
+            cases.set(29, uneCase);
+            uneCase = cases.get(30);
+            uneCase.set(0, "27");
+            cases.set(30, uneCase);
+            uneCase = cases.get(31);
+            uneCase.set(0, "28");
+            cases.set(31, uneCase);
+
+            if (numberOfDaysInThisMonth > 28)
+            {
+                uneCase = cases.get(32);
+                uneCase.set(0, "29");
+                cases.set(32, uneCase);
+            }
+
+            if (numberOfDaysInThisMonth > 29)
+            {
+                uneCase = cases.get(33);
+                uneCase.set(0, "30");
+                cases.set(33, uneCase);
+            }
+            if (numberOfDaysInThisMonth > 30)
+            {
+                uneCase = cases.get(34);
+                uneCase.set(0, "31");
+                cases.set(34, uneCase);
+            }
+        }
+
+
+
+        if (pJourDuMois == 7)
+        {
+            uneCase = cases.get(5);
+            uneCase.set(0, "01");
+            cases.set(5, uneCase);
+            uneCase = cases.get(6);
+            uneCase.set(0, "02");
+            cases.set(6, uneCase);
+            uneCase = cases.get(7);
+            uneCase.set(0, "03");
+            cases.set(7, uneCase);
+            uneCase = cases.get(8);
+            uneCase.set(0, "04");
+            cases.set(8, uneCase);
+            uneCase = cases.get(9);
+            uneCase.set(0, "05");
+            cases.set(9, uneCase);
+            uneCase = cases.get(10);
+            uneCase.set(0, "06");
+            cases.set(10, uneCase);
+            uneCase = cases.get(11);
+            uneCase.set(0, "07");
+            cases.set(11, uneCase);
+            uneCase = cases.get(12);
+            uneCase.set(0, "08");
+            cases.set(12, uneCase);
+            uneCase = cases.get(13);
+            uneCase.set(0, "09");
+            cases.set(13, uneCase);
+            uneCase = cases.get(14);
+            uneCase.set(0, "10");
+            cases.set(14, uneCase);
+            uneCase = cases.get(15);
+            uneCase.set(0, "11");
+            cases.set(15, uneCase);
+            uneCase = cases.get(16);
+            uneCase.set(0, "12");
+            cases.set(16, uneCase);
+            uneCase = cases.get(17);
+            uneCase.set(0, "13");
+            cases.set(17, uneCase);
+            uneCase = cases.get(18);
+            uneCase.set(0, "14");
+            cases.set(18, uneCase);
+            uneCase = cases.get(19);
+            uneCase.set(0, "15");
+            cases.set(19, uneCase);
+            uneCase = cases.get(20);
+            uneCase.set(0, "16");
+            cases.set(20, uneCase);
+            uneCase = cases.get(21);
+            uneCase.set(0, "17");
+            cases.set(21, uneCase);
+            uneCase = cases.get(22);
+            uneCase.set(0, "18");
+            cases.set(22, uneCase);
+            uneCase = cases.get(23);
+            uneCase.set(0, "19");
+            cases.set(23, uneCase);
+            uneCase = cases.get(24);
+            uneCase.set(0, "20");
+            cases.set(24, uneCase);
+            uneCase = cases.get(25);
+            uneCase.set(0, "21");
+            cases.set(25, uneCase);
+            uneCase = cases.get(26);
+            uneCase.set(0, "22");
+            cases.set(26, uneCase);
+            uneCase = cases.get(27);
+            uneCase.set(0, "23");
+            cases.set(27, uneCase);
+            uneCase = cases.get(28);
+            uneCase.set(0, "24");
+            cases.set(28, uneCase);
+            uneCase = cases.get(29);
+            uneCase.set(0, "25");
+            cases.set(29, uneCase);
+            uneCase = cases.get(30);
+            uneCase.set(0, "26");
+            cases.set(30, uneCase);
+            uneCase = cases.get(31);
+            uneCase.set(0, "27");
+            cases.set(31, uneCase);
+            uneCase = cases.get(32);
+            uneCase.set(0, "28");
+            cases.set(32, uneCase);
+
+            if (numberOfDaysInThisMonth > 28)
+            {
+                uneCase = cases.get(33);
+                uneCase.set(0, "29");
+                cases.set(33, uneCase);
+            }
+
+            if (numberOfDaysInThisMonth > 29)
+            {
+                uneCase = cases.get(34);
+                uneCase.set(0, "30");
+                cases.set(34, uneCase);
+            }
+            if (numberOfDaysInThisMonth > 30)
+            {
+                uneCase = cases.get(35);
+                uneCase.set(0, "31");
+                cases.set(35, uneCase);
+            }
+        }
+
+
+
+        if (pJourDuMois == 1)
+        {
+            uneCase = cases.get(6);
+            uneCase.set(0, "01");
+            cases.set(6, uneCase);
+            uneCase = cases.get(7);
+            uneCase.set(0, "02");
+            cases.set(7, uneCase);
+            uneCase = cases.get(8);
+            uneCase.set(0, "03");
+            cases.set(8, uneCase);
+            uneCase = cases.get(9);
+            uneCase.set(0, "04");
+            cases.set(9, uneCase);
+            uneCase = cases.get(10);
+            uneCase.set(0, "05");
+            cases.set(10, uneCase);
+            uneCase = cases.get(11);
+            uneCase.set(0, "06");
+            cases.set(11, uneCase);
+            uneCase = cases.get(12);
+            uneCase.set(0, "07");
+            cases.set(12, uneCase);
+            uneCase = cases.get(13);
+            uneCase.set(0, "08");
+            cases.set(13, uneCase);
+            uneCase = cases.get(14);
+            uneCase.set(0, "09");
+            cases.set(14, uneCase);
+            uneCase = cases.get(15);
+            uneCase.set(0, "10");
+            cases.set(15, uneCase);
+            uneCase = cases.get(16);
+            uneCase.set(0, "11");
+            cases.set(16, uneCase);
+            uneCase = cases.get(17);
+            uneCase.set(0, "12");
+            cases.set(17, uneCase);
+            uneCase = cases.get(18);
+            uneCase.set(0, "13");
+            cases.set(18, uneCase);
+            uneCase = cases.get(19);
+            uneCase.set(0, "14");
+            cases.set(19, uneCase);
+            uneCase = cases.get(20);
+            uneCase.set(0, "15");
+            cases.set(20, uneCase);
+            uneCase = cases.get(21);
+            uneCase.set(0, "16");
+            cases.set(21, uneCase);
+            uneCase = cases.get(22);
+            uneCase.set(0, "17");
+            cases.set(22, uneCase);
+            uneCase = cases.get(23);
+            uneCase.set(0, "18");
+            cases.set(23, uneCase);
+            uneCase = cases.get(24);
+            uneCase.set(0, "19");
+            cases.set(24, uneCase);
+            uneCase = cases.get(25);
+            uneCase.set(0, "20");
+            cases.set(25, uneCase);
+            uneCase = cases.get(26);
+            uneCase.set(0, "21");
+            cases.set(26, uneCase);
+            uneCase = cases.get(27);
+            uneCase.set(0, "22");
+            cases.set(27, uneCase);
+            uneCase = cases.get(28);
+            uneCase.set(0, "23");
+            cases.set(28, uneCase);
+            uneCase = cases.get(29);
+            uneCase.set(0, "24");
+            cases.set(29, uneCase);
+            uneCase = cases.get(30);
+            uneCase.set(0, "25");
+            cases.set(30, uneCase);
+            uneCase = cases.get(31);
+            uneCase.set(0, "26");
+            cases.set(31, uneCase);
+            uneCase = cases.get(32);
+            uneCase.set(0, "27");
+            cases.set(32, uneCase);
+            uneCase = cases.get(33);
+            uneCase.set(0, "28");
+            cases.set(33, uneCase);
+
+            if (numberOfDaysInThisMonth > 28)
+            {
+                uneCase = cases.get(34);
+                uneCase.set(0, "29");
+                cases.set(34, uneCase);
+            }
+
+            if (numberOfDaysInThisMonth > 29)
+            {
+                uneCase = cases.get(35);
+                uneCase.set(0, "30");
+                cases.set(35, uneCase);
+            }
+            if (numberOfDaysInThisMonth > 30)
+            {
+                uneCase = cases.get(36);
+                uneCase.set(0, "31");
+                cases.set(36, uneCase);
+            }
+        }
+
+        detJourActuel();
+    }
+    void razJoursMois() {
+        setText(calendrier_c1, "");
+        setText(calendrier_c2, "");
+        setText(calendrier_c3, "");
+        setText(calendrier_c4, "");
+        setText(calendrier_c5, "");
+        setText(calendrier_c6, "");
+        setText(calendrier_c7, "");
+        setText(calendrier_c8, "");
+        setText(calendrier_c9, "");
+        setText(calendrier_c10, "");
+        setText(calendrier_c11, "");
+        setText(calendrier_c12, "");
+        setText(calendrier_c13, "");
+        setText(calendrier_c14, "");
+        setText(calendrier_c15, "");
+        setText(calendrier_c16, "");
+        setText(calendrier_c17, "");
+        setText(calendrier_c18, "");
+        setText(calendrier_c19, "");
+        setText(calendrier_c20, "");
+        setText(calendrier_c21, "");
+        setText(calendrier_c22, "");
+        setText(calendrier_c23, "");
+        setText(calendrier_c24, "");
+        setText(calendrier_c25, "");
+        setText(calendrier_c26, "");
+        setText(calendrier_c27, "");
+        setText(calendrier_c28, "");
+        setText(calendrier_c29, "");
+        setText(calendrier_c30, "");
+        setText(calendrier_c31, "");
+        setText(calendrier_c32, "");
+        setText(calendrier_c33, "");
+        setText(calendrier_c34, "");
+        setText(calendrier_c35, "");
+        setText(calendrier_c36, "");
+        setText(calendrier_c37, "");
+        setText(calendrier_c38, "");
+        setText(calendrier_c39, "");
+        setText(calendrier_c40, "");
+        setText(calendrier_c41, "");
+        setText(calendrier_c42, "");
+
+        setBg(calendrier_c1, "j");
+        setBg(calendrier_c2, "j");
+        setBg(calendrier_c3, "j");
+        setBg(calendrier_c4, "j");
+        setBg(calendrier_c5, "j");
+        setBg(calendrier_c6, "j");
+        setBg(calendrier_c7, "j");
+        setBg(calendrier_c8, "j");
+        setBg(calendrier_c9, "j");
+        setBg(calendrier_c10, "j");
+        setBg(calendrier_c11, "j");
+        setBg(calendrier_c12, "j");
+        setBg(calendrier_c13, "j");
+        setBg(calendrier_c14, "j");
+        setBg(calendrier_c15, "j");
+        setBg(calendrier_c16, "j");
+        setBg(calendrier_c17, "j");
+        setBg(calendrier_c18, "j");
+        setBg(calendrier_c19, "j");
+        setBg(calendrier_c20, "j");
+        setBg(calendrier_c21, "j");
+        setBg(calendrier_c22, "j");
+        setBg(calendrier_c23, "j");
+        setBg(calendrier_c24, "j");
+        setBg(calendrier_c25, "j");
+        setBg(calendrier_c26, "j");
+        setBg(calendrier_c27, "j");
+        setBg(calendrier_c28, "j");
+        setBg(calendrier_c29, "j");
+        setBg(calendrier_c30, "j");
+        setBg(calendrier_c31, "j");
+        setBg(calendrier_c32, "j");
+        setBg(calendrier_c33, "j");
+        setBg(calendrier_c34, "j");
+        setBg(calendrier_c35, "j");
+        setBg(calendrier_c36, "j");
+        setBg(calendrier_c37, "j");
+        setBg(calendrier_c38, "j");
+        setBg(calendrier_c39, "j");
+        setBg(calendrier_c40, "j");
+        setBg(calendrier_c41, "j");
+        setBg(calendrier_c42, "j");
+
+        cases.clear();
+
+        for (int i = 1; i < 43; i++) {
+            List<String> uneCase = new ArrayList<String>();
+
+            uneCase.add("");
+            uneCase.add("null");
+
+            cases.add(uneCase);
+        }
+    }
+    void majCalendrier() {
+        // Log.i(TAG, String.valueOf(cases));
+
+        Integer numMois = Integer.parseInt(sdfMonth.format(dateCalendrier.getTime()));
+
+        if (numMois == 1) {
+            setText(calendrier_nomDuMois, NOM_MOIS_01 + " " + sdfYear.format(dateCalendrier.getTime()));
+        }
+
+        if (numMois == 2) {
+            setText(calendrier_nomDuMois, NOM_MOIS_02 + " " + sdfYear.format(dateCalendrier.getTime()));
+        }
+
+        if (numMois == 3) {
+            setText(calendrier_nomDuMois, NOM_MOIS_03 + " " + sdfYear.format(dateCalendrier.getTime()));
+        }
+
+        if (numMois == 4) {
+            setText(calendrier_nomDuMois, NOM_MOIS_04 + " " + sdfYear.format(dateCalendrier.getTime()));
+        }
+
+        if (numMois == 5) {
+            setText(calendrier_nomDuMois, NOM_MOIS_05 + " " + sdfYear.format(dateCalendrier.getTime()));
+        }
+
+        if (numMois == 6) {
+            setText(calendrier_nomDuMois, NOM_MOIS_06 + " " + sdfYear.format(dateCalendrier.getTime()));
+        }
+
+        if (numMois == 7) {
+            setText(calendrier_nomDuMois, NOM_MOIS_07 + " " + sdfYear.format(dateCalendrier.getTime()));
+        }
+
+        if (numMois == 8) {
+            setText(calendrier_nomDuMois, NOM_MOIS_08 + " " + sdfYear.format(dateCalendrier.getTime()));
+        }
+
+        if (numMois == 9) {
+            setText(calendrier_nomDuMois, NOM_MOIS_09 + " " + sdfYear.format(dateCalendrier.getTime()));
+        }
+
+        if (numMois == 10) {
+            setText(calendrier_nomDuMois, NOM_MOIS_10 + " " + sdfYear.format(dateCalendrier.getTime()));
+        }
+
+        if (numMois == 11) {
+            setText(calendrier_nomDuMois, NOM_MOIS_11 + " " + sdfYear.format(dateCalendrier.getTime()));
+        }
+
+        if (numMois == 12) {
+            setText(calendrier_nomDuMois, NOM_MOIS_12 + " " + sdfYear.format(dateCalendrier.getTime()));
+        }
+
+        List<String> uneCase = new ArrayList<String>();
+
+        uneCase = cases.get(0);
+        setText(calendrier_c1, uneCase.get(0));
+        setBg(calendrier_c1, uneCase.get(1));
+
+        uneCase = cases.get(1);
+        setText(calendrier_c2, uneCase.get(0));
+        setBg(calendrier_c2, uneCase.get(1));
+
+        uneCase = cases.get(2);
+        setText(calendrier_c3, uneCase.get(0));
+        setBg(calendrier_c3, uneCase.get(1));
+
+        uneCase = cases.get(3);
+        setText(calendrier_c4, uneCase.get(0));
+        setBg(calendrier_c4, uneCase.get(1));
+
+        uneCase = cases.get(4);
+        setText(calendrier_c5, uneCase.get(0));
+        setBg(calendrier_c5, uneCase.get(1));
+
+        uneCase = cases.get(5);
+        setText(calendrier_c6, uneCase.get(0));
+        setBg(calendrier_c6, uneCase.get(1));
+        uneCase = cases.get(6);
+        setText(calendrier_c7, uneCase.get(0));
+        setBg(calendrier_c7, uneCase.get(1));
+
+        uneCase = cases.get(7);
+        setText(calendrier_c8, uneCase.get(0));
+        setBg(calendrier_c8, uneCase.get(1));
+
+        uneCase = cases.get(8);
+        setText(calendrier_c9, uneCase.get(0));
+        setBg(calendrier_c9, uneCase.get(1));
+
+        uneCase = cases.get(9);
+        setText(calendrier_c10, uneCase.get(0));
+        setBg(calendrier_c10, uneCase.get(1));
+
+        uneCase = cases.get(10);
+        setText(calendrier_c11, uneCase.get(0));
+        setBg(calendrier_c11, uneCase.get(1));
+
+        uneCase = cases.get(11);
+        setText(calendrier_c12, uneCase.get(0));
+        setBg(calendrier_c12, uneCase.get(1));
+
+        uneCase = cases.get(12);
+        setText(calendrier_c13, uneCase.get(0));
+        setBg(calendrier_c13, uneCase.get(1));
+
+        uneCase = cases.get(13);
+        setText(calendrier_c14, uneCase.get(0));
+        setBg(calendrier_c14, uneCase.get(1));
+
+        uneCase = cases.get(14);
+        setText(calendrier_c15, uneCase.get(0));
+        setBg(calendrier_c15, uneCase.get(1));
+
+        uneCase = cases.get(15);
+        setText(calendrier_c16, uneCase.get(0));
+        setBg(calendrier_c16, uneCase.get(1));
+
+        uneCase = cases.get(16);
+        setText(calendrier_c17, uneCase.get(0));
+        setBg(calendrier_c17, uneCase.get(1));
+
+        uneCase = cases.get(17);
+        setText(calendrier_c18, uneCase.get(0));
+        setBg(calendrier_c18, uneCase.get(1));
+
+        uneCase = cases.get(18);
+        setText(calendrier_c19, uneCase.get(0));
+        setBg(calendrier_c19, uneCase.get(1));
+
+        uneCase = cases.get(19);
+        setText(calendrier_c20, uneCase.get(0));
+        setBg(calendrier_c20, uneCase.get(1));
+
+        uneCase = cases.get(20);
+        setText(calendrier_c21, uneCase.get(0));
+        setBg(calendrier_c21, uneCase.get(1));
+
+        uneCase = cases.get(21);
+        setText(calendrier_c22, uneCase.get(0));
+        setBg(calendrier_c22, uneCase.get(1));
+
+        uneCase = cases.get(22);
+        setText(calendrier_c23, uneCase.get(0));
+        setBg(calendrier_c23, uneCase.get(1));
+
+        uneCase = cases.get(23);
+        setText(calendrier_c24, uneCase.get(0));
+        setBg(calendrier_c24, uneCase.get(1));
+
+        uneCase = cases.get(24);
+        setText(calendrier_c25, uneCase.get(0));
+        setBg(calendrier_c25, uneCase.get(1));
+
+        uneCase = cases.get(25);
+        setText(calendrier_c26, uneCase.get(0));
+        setBg(calendrier_c26, uneCase.get(1));
+
+        uneCase = cases.get(26);
+        setText(calendrier_c27, uneCase.get(0));
+        setBg(calendrier_c27, uneCase.get(1));
+
+        uneCase = cases.get(27);
+        setText(calendrier_c28, uneCase.get(0));
+        setBg(calendrier_c28, uneCase.get(1));
+
+        uneCase = cases.get(28);
+        setText(calendrier_c29, uneCase.get(0));
+        setBg(calendrier_c29, uneCase.get(1));
+
+        uneCase = cases.get(29);
+        setText(calendrier_c30, uneCase.get(0));
+        setBg(calendrier_c30, uneCase.get(1));
+
+        uneCase = cases.get(30);
+        setText(calendrier_c31, uneCase.get(0));
+        setBg(calendrier_c31, uneCase.get(1));
+
+        uneCase = cases.get(31);
+        setText(calendrier_c32, uneCase.get(0));
+        setBg(calendrier_c32, uneCase.get(1));
+
+        uneCase = cases.get(32);
+        setText(calendrier_c33, uneCase.get(0));
+        setBg(calendrier_c33, uneCase.get(1));
+
+        uneCase = cases.get(33);
+        setText(calendrier_c34, uneCase.get(0));
+        setBg(calendrier_c34, uneCase.get(1));
+
+        uneCase = cases.get(34);
+        setText(calendrier_c35, uneCase.get(0));
+        setBg(calendrier_c35, uneCase.get(1));
+
+        uneCase = cases.get(35);
+        setText(calendrier_c36, uneCase.get(0));
+        setBg(calendrier_c36, uneCase.get(1));
+
+        uneCase = cases.get(36);
+        setText(calendrier_c37, uneCase.get(0));
+        setBg(calendrier_c37, uneCase.get(1));
+
+        uneCase = cases.get(37);
+        setText(calendrier_c38, uneCase.get(0));
+        setBg(calendrier_c38, uneCase.get(1));
+
+        uneCase = cases.get(38);
+        setText(calendrier_c39, uneCase.get(0));
+        setBg(calendrier_c39, uneCase.get(1));
+
+        uneCase = cases.get(39);
+        setText(calendrier_c40, uneCase.get(0));
+        setBg(calendrier_c40, uneCase.get(1));
+
+        uneCase = cases.get(40);
+        setText(calendrier_c41, uneCase.get(0));
+        setBg(calendrier_c41, uneCase.get(1));
+
+        uneCase = cases.get(41);
+        setText(calendrier_c42, uneCase.get(0));
+        setBg(calendrier_c42, uneCase.get(1));
+    }
+    void majEvt() {
+        setText(calendrier_nomDeEvt, nomEvt);
+
+        if (Integer.parseInt(numEvt) == 0) {
+            setHW(calendrier_choixEvt, 0, 0);
+        }
+        else {
+            setHW(calendrier_choixEvt, 720, 86);
+            setText(calendrier_affPage, numEvt);
+        }
+    }
+    void razEvt() {
+        numEvt = "0";
+        nomEvt = "";
+        evtAjh.clear();
+        majEvt();
+    }
 
 
     // Renseignement graphique
@@ -897,34 +2021,70 @@ public class MainActivity extends AppCompatActivity {
         width = metrics.widthPixels;
         Log.i(TAG, width + "x" + height);
     }
-
-    public void setMargins (View v, int l, int t, int r, int b) {
+    public void setMargins(View v, int l, int t, int r, int b) {
         if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-            p.setMargins(l*width/720, t*width/1280, r*width/720, b*width/1280);
+            p.setMargins(l * width / 720, t * width / 1280, r * width / 720, b * width / 1280);
             v.requestLayout();
         }
     }
-
-    public void setHW (View v, int w, int h) {
-        v.setLayoutParams(new LinearLayout.LayoutParams(w*width/720, (h*height)/1280));
+    public void setHW(View v, int w, int h) {
+        v.setLayoutParams(new LinearLayout.LayoutParams(w * width / 720, (h * height) / 1280));
     }
-
     public void setTextSize(TextView v, float s) {
-        v.setTextSize((s*height)/1280);
+        v.setTextSize((s * height) / 1280);
     }
-
     public void setText(TextView v, String t) {
         v.setText(t);
 
     }
+    public void setBg(TextView v, String t) {
+        if (t.equals("null")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                v.setBackground(getDrawable(R.drawable.calendrier_j));
+                // Log.i(TAG, v.getText() + " passe son background à j");
+            }
+        }
 
+        if (t.equals("jA")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                v.setBackground(getDrawable(R.drawable.calendrier_jour_actuel));
+                // Log.i(TAG, v.getText() + " passe son background à jA");
+            }
+        }
 
+        if (t.equals("jC")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                v.setBackground(getDrawable(R.drawable.calendrier_jour_chaleur));
+                // Log.i(TAG, v.getText() + " passe son background à jC");
+            }
+        }
 
+        if (t.equals("jCS")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                v.setBackground(getDrawable(R.drawable.calendrier_jour_chaleur_sel));
+                // Log.i(TAG, v.getText() + " passe son background à jCS");
+            }
+        }
+
+        if (t.equals("jG")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                v.setBackground(getDrawable(R.drawable.calendrier_jour_gestation));
+                // Log.i(TAG, v.getText() + " passe son background à jG");
+            }
+        }
+
+        if (t.equals("jGS")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                v.setBackground(getDrawable(R.drawable.calendrier_jour_gestation_sel));
+                // Log.i(TAG, v.getText() + " passe son background à jGS");
+            }
+        }
+    }
 
 
     // Fonctions OnClick
-    void OnClickMenuAjouter(){
+    void OnClickMenuAjouter() {
         Log.i(TAG, "Ouverture du layout Ajouter");
 
         //setHW(layoutMain, 720, 1100);
@@ -940,7 +2100,7 @@ public class MainActivity extends AppCompatActivity {
         initDateAjouter();
         razChampAjouter();
     }
-    void OnClickMenuCalendrier(){
+    void OnClickMenuCalendrier() {
         Log.i(TAG, "Ouverture du layout Calendrier");
 
         //setHW(layoutMain, 720, 1100);
@@ -952,8 +2112,12 @@ public class MainActivity extends AppCompatActivity {
         setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
         //setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
         setHW(layoutConflit, 720, 0);  // Faire disparaitre Conflit
+
+        joursDuMois();
+        majCalendrier();
+        razEvt();
     }
-    void OnClickMenuConflit(){
+    void OnClickMenuConflit() {
         Log.i(TAG, "Ouverture du layout Conflit");
 
         //setHW(layoutMain, 720, 1100);
@@ -977,19 +2141,15 @@ public class MainActivity extends AppCompatActivity {
 
         cI = contientCarInterdit(nomEvt);
 
-        if("".equals(nomEvt)){
+        if ("".equals(nomEvt)) {
             setHW(ajouter_notif_evt_vide, 720, 130);
 
             Log.i(TAG, "Tentative d'ajout d'un évènement vide.");
-        }
-
-        else{
+        } else {
             if (cI == true) {
                 setHW(ajouter_notif_car_inc, 720, 200);
                 Log.i(TAG, "Tentative d'ajout d'un évènement contenant des caractères interdits.");
-            }
-
-            else {
+            } else {
                 List<EvtV> evts = dataManager.readByNom(nomEvt);
                 Integer lenList = evts.size();
 
@@ -1000,9 +2160,7 @@ public class MainActivity extends AppCompatActivity {
                     String dD = evt.getDateDebut();
 
                     ajouter_notif_deja_existant.setText(dateAffichage.format(dateSQL.parse(dD)));
-                }
-
-                else {
+                } else {
                     Calendar tDS = Calendar.getInstance();
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     String dD = sdf.format(tDS.getTime());
@@ -1012,15 +2170,61 @@ public class MainActivity extends AppCompatActivity {
                     dataManager.insertEvt(nomEvt, dD, dC);
                     dataManager.close();
 
-                    Log.i(TAG, "Ajout de l'évènement "+ nomEvt + " à la BDD.");
+                    Log.i(TAG, "Ajout de l'évènement " + nomEvt + " à la BDD.");
                     razChampAjouter();
                 }
             }
         }
     }
+    void OnClickMoisL() throws ParseException {
+        moisAv();
+        detJourActuel();
+
+        if (cOUg.equals("g")) {
+            casesGestation();
+        }
+
+        if (cOUg.equals("c")) {
+            casesChaleur();
+        }
 
 
+        majCalendrier();
+        razEvt();
+    }
+    void OnClickMoisR() throws ParseException {
+        moisAp();
+        detJourActuel();
 
+        if (cOUg.equals("g")) {
+            casesGestation();
+        }
+
+        if (cOUg.equals("c")) {
+            casesChaleur();
+        }
+
+        majCalendrier();
+        razEvt();
+    }
+    void OnClickChaleur() throws ParseException {
+        if (!cOUg.equals("c")) {
+            joursDuMois();
+            casesChaleur();
+            majCalendrier();
+            cOUg = "c";
+            razEvt();
+        }
+    }
+    void OnClickGestation() throws ParseException {
+        if (!cOUg.equals("g")) {
+            joursDuMois();
+            casesGestation();
+            majCalendrier();
+            cOUg = "g";
+            razEvt();
+        }
+    }
 
 
     // Fonctions en tout genre
@@ -1032,10 +2236,119 @@ public class MainActivity extends AppCompatActivity {
         indexOf1 = c.indexOf("'");
         indexOf2 = c.indexOf("\"");
 
-        if(indexOf1 != -1 || indexOf2 != -1){
+        if (indexOf1 != -1 || indexOf2 != -1) {
             present = true;
         }
 
         return present;
+    }
+    void moisAv() {
+        dateCalendrier.set(Integer.parseInt(sdfYear.format(dateCalendrier.getTime())), Integer.parseInt(sdfMonth.format(dateCalendrier.getTime())) - 2, 1);
+        joursDuMois();
+
+        Log.i(TAG, "Le calendrier recule d'un mois");
+    }
+    void moisAp() {
+        dateCalendrier.set(Integer.parseInt(sdfYear.format(dateCalendrier.getTime())), Integer.parseInt(sdfMonth.format(dateCalendrier.getTime())), 1);
+
+        joursDuMois();
+
+        Log.i(TAG, "Le calendrier avance d'un mois");
+    }
+    void detJourActuel() {
+        Calendar now = Calendar.getInstance();
+
+        if (sdfMonth.format(now.getTime()).equals(sdfMonth.format(dateCalendrier.getTime()))) {
+            if (sdfYear.format(now.getTime()).equals(sdfYear.format(dateCalendrier.getTime()))) {
+                for (int i = 0; i < 42; i++) {
+                    // Log.i(TAG, String.valueOf(i));
+
+                    List<String> uneCase = new ArrayList<String>();
+                    uneCase = cases.get(i);
+
+
+                    if (uneCase.get(0).equals(sdfDay.format(now.getTime()))) {
+                        uneCase.set(1, "jA");
+                        cases.set(i, uneCase);
+                        Log.i(TAG, "La case " + (i + 1) + " représente le jour actuel.");
+                    }
+                }
+            }
+        }
+    }
+    void casesChaleur() throws ParseException {
+        List<EvtV> evts = dataManager.selectEvtChaleurMois(sdfYear.format(dateCalendrier.getTime()) + "-" + sdfMonth.format(dateCalendrier.getTime()));
+
+        for (EvtV evt : evts) {
+            // Log.i(TAG, evt.info());
+
+            for (int i = 0; i < 42; i++) {
+                // Log.i(TAG, String.valueOf(i));
+
+                List<String> uneCase = new ArrayList<String>();
+                uneCase = cases.get(i);
+
+                //Log.i(TAG + "_", "RAS");
+                Log.i(TAG + "_", String.valueOf(uneCase));
+                Log.i(TAG + "_", sdfDay.format(dateSQL.parse(evt.getDateChaleur())));
+
+                if (!uneCase.get(0).equals("")) {
+                    if (Integer.parseInt(uneCase.get(0)) == Integer.parseInt(sdfDay.format(dateSQL.parse(evt.getDateChaleur())))) {
+                        uneCase.set(1, "jC");
+                        cases.set(i, uneCase);
+                        Log.i(TAG, "La case " + (i + 1) + " représente un jour Chaleur.");
+                    }
+                }
+            }
+        }
+    }
+    void casesGestation() throws ParseException {
+        List<EvtV> evts = dataManager.selectEvtGestationMois(sdfYear.format(dateCalendrier.getTime()) + "-" + sdfMonth.format(dateCalendrier.getTime()));
+
+        for (EvtV evt : evts) {
+            //Log.i(TAG, evt.info());
+
+            for (int i = 0; i < 42; i++) {
+                // Log.i(TAG, String.valueOf(i));
+
+                List<String> uneCase = new ArrayList<String>();
+                uneCase = cases.get(i);
+                if (!uneCase.get(0).equals("")) {
+                    if (Integer.parseInt(uneCase.get(0)) == Integer.parseInt(sdfDay.format(dateSQL.parse(evt.getDateGestation())))) {
+                        uneCase.set(1, "jG");
+                        cases.set(i, uneCase);
+                        Log.i(TAG, "La case " + (i + 1) + " représente un jour de Gestation.");
+                    }
+                }
+            }
+        }
+    }
+    void mettreCalendrierAJour(String XX) {
+        dateCalendrier.set(Integer.parseInt(sdfYear.format(dateCalendrier.getTime())), Integer.parseInt(sdfMonth.format(dateCalendrier.getTime()))-1, Integer.parseInt(XX));
+        Log.i(TAG, dateAffichage.format(dateCalendrier.getTime()));
+    }
+    void caseSelectionnee(String XX) {
+        for (int i = 0; i < 42; i++) {
+            // Log.i(TAG, String.valueOf(i));
+
+            List<String> uneCase = new ArrayList<String>();
+            uneCase = cases.get(i);
+
+            if (Integer.parseInt(uneCase.get(0)) == Integer.parseInt(XX)) {
+                // Log.i(TAG, "La case " + (i + 1) + " a été clické.");
+
+                if (cOUg.equals("g")) {
+                    uneCase.set(1, "jGS");
+                    cases.set(i, uneCase);
+                    Log.i(TAG, "La case " + (i + 1) + " a été colorié en jGS.");
+                }
+
+                if (cOUg.equals("c")) {
+                    uneCase.set(1, "jCS");
+                    cases.set(i, uneCase);
+                    Log.i(TAG, "La case " + (i + 1) + " a été colorié en jCS.");
+                }
+            }
+        }
     }
 }
