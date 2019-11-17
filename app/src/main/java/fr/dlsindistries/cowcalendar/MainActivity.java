@@ -2,6 +2,7 @@ package fr.dlsindistries.cowcalendar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -11,6 +12,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     // Variables des Layout de l'application
@@ -192,12 +198,43 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    // Base de données
+    private dataManage dataManager = new dataManage( this );
+
+    // Variable de gestion du temps
+    private Calendar dateCalendrier = Calendar.getInstance();  // Variable de type Calendar contenant la date du calendrier, initialisé à la date du jour.
+    private SimpleDateFormat dateAffichage = new SimpleDateFormat("dd/MM/yyyy");
+    private SimpleDateFormat dateSQL = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
+    private SimpleDateFormat sdfMonth = new SimpleDateFormat("MM");
+    private SimpleDateFormat sdfDay = new SimpleDateFormat("MM");
+
     // Constantes
     private String TAG = "DEBUG_";
+    private String NOM_MOIS_01 = "Janvier";
+    private String NOM_MOIS_02 = "Février";
+    private String NOM_MOIS_03 = "Mars";
+    private String NOM_MOIS_04 = "Avril";
+    private String NOM_MOIS_05 = "Mai";
+    private String NOM_MOIS_06 = "Juin";
+    private String NOM_MOIS_07 = "Juillet";
+    private String NOM_MOIS_08 = "Août";
+    private String NOM_MOIS_09 = "Septembre";
+    private String NOM_MOIS_10 = "Octobre";
+    private String NOM_MOIS_11 = "Novembre";
+    private String NOM_MOIS_12 = "Décembre";
+
+
 
     // Variables
     private Integer width;
     private Integer height;
+    private String nomEvt;
+    private String numEvt;
+    private String cOUg;
+    private List<String> evtAjh;
+    private List<List<String>> cases = new ArrayList<List<String>>();
+
 
 
 
@@ -209,8 +246,13 @@ public class MainActivity extends AppCompatActivity {
 
         trouverWH();
 
+
         initPage();
         miseEnPage();
+
+
+        initListCases();
+
 
         btAjouter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -785,6 +827,21 @@ public class MainActivity extends AppCompatActivity {
         setTextSize(conflit_affPage, 20);
         setHW(conflit_pageR, 66, 86);
         setMargins(conflit_pageR, 14, 0, 0, 0);
+    }
+
+
+    // Initialisation de la List cases
+    void initListCases() {
+        for (int i = 1; i<43; i++) {
+            List<String> uneCase = new ArrayList<String>();
+
+            uneCase.add(String.valueOf(i));
+            uneCase.add("null");
+
+            cases.add(uneCase);
+        }
+
+        Log.i(TAG, "Initialisation List cases");
     }
 
 
