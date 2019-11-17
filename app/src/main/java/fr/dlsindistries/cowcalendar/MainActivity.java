@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -131,6 +133,9 @@ public class MainActivity extends AppCompatActivity {
     private EditText ajouter_champ = null;
     private TextView ajouter_date = null;
     private ImageView ajouter_bouton = null;
+    private ImageView ajouter_notif_evt_vide = null;
+    private ImageView ajouter_notif_car_inc = null;
+    private TextView ajouter_notif_deja_existant = null;
 
 
 
@@ -253,23 +258,39 @@ public class MainActivity extends AppCompatActivity {
 
         initListCases();
 
+        List<EvtV> evts = dataManager.readAll();
+
+        for ( EvtV evt : evts ) {
+            Log.i(TAG, evt.info());
+        }
+
 
         btAjouter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickMenuAjouter();
+                OnClickMenuAjouter();
             }
         });
         btCalendrier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickMenuCalendrier();
+                OnClickMenuCalendrier();
             }
         });
         btConflit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickMenuConflit();
+                OnClickMenuConflit();
+            }
+        });
+        ajouter_bouton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    OnClickAjouter();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -392,6 +413,10 @@ public class MainActivity extends AppCompatActivity {
         ajouter_champ = (EditText)findViewById(R.id.ajouter_champ);
         ajouter_date = (TextView)findViewById(R.id.ajouter_date);
         ajouter_bouton = (ImageView)findViewById(R.id.ajouter_bouton);
+        ajouter_notif_evt_vide = (ImageView)findViewById(R.id.ajouter_notif_evt_vide);
+        ajouter_notif_car_inc = (ImageView)findViewById(R.id.ajouter_notif_car_inc);
+        ajouter_notif_deja_existant = (TextView)findViewById(R.id.ajouter_notif_deja_existant);
+
 
 
 
@@ -691,6 +716,12 @@ public class MainActivity extends AppCompatActivity {
         setMargins(ajouter_date, 0, 0, 0, 50);
         setHW(ajouter_bouton, 720, 85);
         setTextSize(ajouter_date, 25);
+        setMargins(ajouter_bouton, 0, 0, 0, 50);
+
+        setHW(ajouter_notif_evt_vide, 720, 0);  // 130
+        setHW(ajouter_notif_car_inc, 720, 0);  // 200
+        setHW(ajouter_notif_deja_existant, 720, 0);  // 200
+        setTextSize(ajouter_notif_deja_existant, 25);
 
 
 
@@ -845,6 +876,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // Fonctions dédié aux graphismes
+    void initDateAjouter() {
+        Calendar now = Calendar.getInstance();
+        setText(ajouter_date, dateAffichage.format(now.getTime()));
+    }
+    void razChampAjouter() {
+        setText(ajouter_champ, "");
+    }
+
+
 
 
 
@@ -873,12 +914,19 @@ public class MainActivity extends AppCompatActivity {
         v.setTextSize((s*height)/1280);
     }
 
+    public void setText(TextView v, String t) {
+        v.setText(t);
+
+    }
+
 
 
 
 
     // Fonctions OnClick
-    void onClickMenuAjouter(){
+    void OnClickMenuAjouter(){
+        Log.i(TAG, "Ouverture du layout Ajouter");
+
         //setHW(layoutMain, 720, 1100);
         setHW(layoutAjouter, 720, 1100);
         //setHW(layoutCalendrier, 720, 1100);
@@ -888,8 +936,13 @@ public class MainActivity extends AppCompatActivity {
         //setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
         setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
         setHW(layoutConflit, 720, 0);  // Faire disparaitre Conflit
+
+        initDateAjouter();
+        razChampAjouter();
     }
-    void onClickMenuCalendrier(){
+    void OnClickMenuCalendrier(){
+        Log.i(TAG, "Ouverture du layout Calendrier");
+
         //setHW(layoutMain, 720, 1100);
         //setHW(layoutAjouter, 720, 1100);
         setHW(layoutCalendrier, 720, 1100);
@@ -900,7 +953,9 @@ public class MainActivity extends AppCompatActivity {
         //setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
         setHW(layoutConflit, 720, 0);  // Faire disparaitre Conflit
     }
-    void onClickMenuConflit(){
+    void OnClickMenuConflit(){
+        Log.i(TAG, "Ouverture du layout Conflit");
+
         //setHW(layoutMain, 720, 1100);
         //setHW(layoutAjouter, 720, 1100);
         //setHW(layoutCalendrier, 720, 1100);
@@ -910,5 +965,77 @@ public class MainActivity extends AppCompatActivity {
         setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
         setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
         //setHW(layoutConflit, 720, 0);  // Faire disparaitre Conflit
+    }
+    void OnClickAjouter() throws ParseException {
+        setHW(ajouter_notif_car_inc, 0, 0);
+        setHW(ajouter_notif_deja_existant, 0, 0);
+        setHW(ajouter_notif_evt_vide, 0, 0);
+
+
+        nomEvt = ajouter_champ.getText().toString();
+        boolean cI = false;  // permet de verifier si un caractère interdit est present
+
+        cI = contientCarInterdit(nomEvt);
+
+        if("".equals(nomEvt)){
+            setHW(ajouter_notif_evt_vide, 720, 130);
+
+            Log.i(TAG, "Tentative d'ajout d'un évènement vide.");
+        }
+
+        else{
+            if (cI == true) {
+                setHW(ajouter_notif_car_inc, 720, 200);
+                Log.i(TAG, "Tentative d'ajout d'un évènement contenant des caractères interdits.");
+            }
+
+            else {
+                List<EvtV> evts = dataManager.readByNom(nomEvt);
+                Integer lenList = evts.size();
+
+                if (lenList > 0) {
+                    setHW(ajouter_notif_deja_existant, 720, 200);
+                    Log.i(TAG, "Tentative d'ajout d'un évènement déjà existant.");
+                    EvtV evt = evts.get(0);
+                    String dD = evt.getDateDebut();
+
+                    ajouter_notif_deja_existant.setText(dateAffichage.format(dateSQL.parse(dD)));
+                }
+
+                else {
+                    Calendar tDS = Calendar.getInstance();
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    String dD = sdf.format(tDS.getTime());
+                    tDS.add(tDS.DATE, 21);
+                    String dC = sdf.format(tDS.getTime());
+
+                    dataManager.insertEvt(nomEvt, dD, dC);
+                    dataManager.close();
+
+                    Log.i(TAG, "Ajout de l'évènement "+ nomEvt + " à la BDD.");
+                    razChampAjouter();
+                }
+            }
+        }
+    }
+
+
+
+
+
+    // Fonctions en tout genre
+    public boolean contientCarInterdit(String c) {
+        boolean present = false;
+        Integer indexOf1 = null;
+        Integer indexOf2 = null;
+
+        indexOf1 = c.indexOf("'");
+        indexOf2 = c.indexOf("\"");
+
+        if(indexOf1 != -1 || indexOf2 != -1){
+            present = true;
+        }
+
+        return present;
     }
 }

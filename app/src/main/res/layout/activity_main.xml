@@ -64,10 +64,33 @@
                 android:layout_height="85px"
                 android:background="@drawable/ajouter_bouton_ajouter" />
 
+            <ImageView
+                android:id="@+id/ajouter_notif_car_inc"
+                android:layout_width="720px"
+                android:layout_height="200px"
+                android:background="@drawable/ajouter_notif_car_inc" />
+
+            <TextView
+                android:id="@+id/ajouter_notif_deja_existant"
+                android:layout_width="720px"
+                android:layout_height="200px"
+                android:background="@drawable/ajouter_notif_deja_existant"
+                android:gravity="bottom|center_horizontal"
+                android:text="dd/MM/yyyy"
+                android:textColor="@color/white"
+                android:textSize="60px"
+                />
+
+            <ImageView
+                android:id="@+id/ajouter_notif_evt_vide"
+                android:layout_width="720px"
+                android:layout_height="130px"
+                android:background="@drawable/ajouter_notif_evt_vide" />
+
+
 
         </LinearLayout>
 
-        <!--TODO changer boule en TextView-->
 
         <!--Layout du menu Calendrier-->
         <LinearLayout
