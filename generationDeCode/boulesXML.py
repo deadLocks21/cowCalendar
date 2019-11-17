@@ -16,11 +16,13 @@ for i in range(6):
     """ % ( str(i+1)) )
 
     for e in range(7):
-        print("""   <ImageView
+        print("""   <TextView
         android:id="@+id/calendrier_c%s"
         android:layout_width="70px"
         android:layout_height="70px"
-        android:background="@drawable/calendrier_boule_av_evt" />""" % ( str(c) ))
+        android:background="@drawable/calendrier_boule_av_evt"
+        android:text="%s"
+        android:textColor="@color/dark"/>""" % ( str(c), str(c) ))
         c += 1
 
     print("""</LinearLayout>
