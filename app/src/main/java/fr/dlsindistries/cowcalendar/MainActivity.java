@@ -244,7 +244,9 @@ public class MainActivity extends AppCompatActivity {
 
         initListCases();
 
-
+        joursDuMois();
+        majCalendrier();
+        razEvt();
 
         btAjouter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -312,6 +314,270 @@ public class MainActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        calendrier_c1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC1();
+            }
+        });
+        calendrier_c2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC2();
+            }
+        });
+        calendrier_c3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC3();
+            }
+        });
+        calendrier_c4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC4();
+            }
+        });
+        calendrier_c5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC5();
+            }
+        });
+        calendrier_c6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC6();
+            }
+        });
+        calendrier_c7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC7();
+            }
+        });
+        calendrier_c8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC8();
+            }
+        });
+        calendrier_c9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC9();
+            }
+        });
+        calendrier_c10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC10();
+            }
+        });
+        calendrier_c11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC11();
+            }
+        });
+        calendrier_c12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC12();
+            }
+        });
+        calendrier_c13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC13();
+            }
+        });
+        calendrier_c14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC14();
+            }
+        });
+        calendrier_c15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC15();
+            }
+        });
+        calendrier_c16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC16();
+            }
+        });
+        calendrier_c17.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC17();
+            }
+        });
+        calendrier_c18.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC18();
+            }
+        });
+        calendrier_c19.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC19();
+            }
+        });
+        calendrier_c20.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC20();
+            }
+        });
+        calendrier_c21.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC21();
+            }
+        });
+        calendrier_c22.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC22();
+            }
+        });
+        calendrier_c23.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC23();
+            }
+        });
+        calendrier_c24.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC24();
+            }
+        });
+        calendrier_c25.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC25();
+            }
+        });
+        calendrier_c26.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC26();
+            }
+        });
+        calendrier_c27.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC27();
+            }
+        });
+        calendrier_c28.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC28();
+            }
+        });
+        calendrier_c29.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC29();
+            }
+        });
+        calendrier_c30.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC30();
+            }
+        });
+        calendrier_c31.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC31();
+            }
+        });
+        calendrier_c32.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC32();
+            }
+        });
+        calendrier_c33.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC33();
+            }
+        });
+        calendrier_c34.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC34();
+            }
+        });
+        calendrier_c35.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC35();
+            }
+        });
+        calendrier_c36.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC36();
+            }
+        });
+        calendrier_c37.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC37();
+            }
+        });
+        calendrier_c38.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC38();
+            }
+        });
+        calendrier_c39.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC39();
+            }
+        });
+        calendrier_c40.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC40();
+            }
+        });
+        calendrier_c41.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC41();
+            }
+        });
+        calendrier_c42.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickC42();
+            }
+        });
+        calendrier_pageL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickCPageL();
+            }
+        });
+        calendrier_pageR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickCPageR();
             }
         });
     }
@@ -495,13 +761,13 @@ public class MainActivity extends AppCompatActivity {
         // Mise en page Layout
         //setHW(layoutMain, 720, 1100);
         //setHW(layoutAjouter, 720, 1100);
-        //setHW(layoutCalendrier, 720, 1100);
-        setHW(layoutConflit, 720, 1100);
+        setHW(layoutCalendrier, 720, 1100);
+        //setHW(layoutConflit, 720, 1100);
         setHW(layoutMenu, 720, 180);
         setHW(layoutMain, 720, 0);  // Faire disparaitre Main
         setHW(layoutAjouter, 720, 0);  // Faire disparaitre Ajouter
-        setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
-        //setHW(layoutConflit, 720, 0);  // Faire disparaitre Conflit
+        //setHW(layoutCalendrier, 720, 0);  // Faire disparaitre Calendrier
+        setHW(layoutConflit, 720, 0);  // Faire disparaitre Conflit
 
         setHW(barreMainLayout, 720, 5);
 
@@ -1997,12 +2263,19 @@ public class MainActivity extends AppCompatActivity {
     void majEvt() {
         setText(calendrier_nomDeEvt, nomEvt);
 
+        Log.i(TAG + "_", "numEvt : "+numEvt);
         if (Integer.parseInt(numEvt) == 0) {
             setHW(calendrier_choixEvt, 0, 0);
         }
         else {
             setHW(calendrier_choixEvt, 720, 86);
             setText(calendrier_affPage, numEvt);
+            calendrier_pageL.setVisibility(View.INVISIBLE);
+
+            calendrier_pageR.setVisibility(View.VISIBLE);
+            if (evtAjh.size() == 1) {
+                calendrier_pageR.setVisibility(View.INVISIBLE);
+            }
         }
     }
     void razEvt() {
@@ -2116,6 +2389,7 @@ public class MainActivity extends AppCompatActivity {
         joursDuMois();
         majCalendrier();
         razEvt();
+        cOUg = "";
     }
     void OnClickMenuConflit() {
         Log.i(TAG, "Ouverture du layout Conflit");
@@ -2225,7 +2499,1124 @@ public class MainActivity extends AppCompatActivity {
             razEvt();
         }
     }
+    void OnClickC1() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c1.getText());
+        caseSelectionnee("1");
 
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC2() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c2.getText());
+        caseSelectionnee("2");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC3() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c3.getText());
+        caseSelectionnee("3");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC4() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c4.getText());
+        caseSelectionnee("4");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC5() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c5.getText());
+        caseSelectionnee("5");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC6() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c6.getText());
+        caseSelectionnee("6");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC7() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c7.getText());
+        caseSelectionnee("7");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC8() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c8.getText());
+        caseSelectionnee("8");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC9() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c9.getText());
+        caseSelectionnee("9");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC10() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c10.getText());
+        caseSelectionnee("10");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC11() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c11.getText());
+        caseSelectionnee("11");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC12() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c12.getText());
+        caseSelectionnee("12");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC13() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c13.getText());
+        caseSelectionnee("13");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC14() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c14.getText());
+        caseSelectionnee("14");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC15() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c15.getText());
+        caseSelectionnee("15");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC16() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c16.getText());
+        caseSelectionnee("16");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC17() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c17.getText());
+        caseSelectionnee("17");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC18() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c18.getText());
+        caseSelectionnee("18");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC19() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c19.getText());
+        caseSelectionnee("19");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC20() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c20.getText());
+        caseSelectionnee("20");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC21() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c21.getText());
+        caseSelectionnee("21");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC22() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c22.getText());
+        caseSelectionnee("22");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC23() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c23.getText());
+        caseSelectionnee("23");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC24() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c24.getText());
+        caseSelectionnee("24");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC25() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c25.getText());
+        caseSelectionnee("25");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC26() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c26.getText());
+        caseSelectionnee("26");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC27() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c27.getText());
+        caseSelectionnee("27");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC28() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c28.getText());
+        caseSelectionnee("28");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC29() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c29.getText());
+        caseSelectionnee("29");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC30() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c30.getText());
+        caseSelectionnee("30");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC31() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c31.getText());
+        caseSelectionnee("31");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC32() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c32.getText());
+        caseSelectionnee("32");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC33() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c33.getText());
+        caseSelectionnee("33");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC34() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c34.getText());
+        caseSelectionnee("34");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC35() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c35.getText());
+        caseSelectionnee("35");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC36() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c36.getText());
+        caseSelectionnee("36");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC37() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c37.getText());
+        caseSelectionnee("37");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC38() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c38.getText());
+        caseSelectionnee("38");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC39() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c39.getText());
+        caseSelectionnee("39");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC40() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c40.getText());
+        caseSelectionnee("40");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC41() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c41.getText());
+        caseSelectionnee("41");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickC42() {
+        razEvt();
+        mettreCalendrierAJour((String) calendrier_c42.getText());
+        caseSelectionnee("42");
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+
+        if (cOUg.equals("c")) {
+            evts = dataManager.selectEvtChaleurJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (cOUg.equals("g")) {
+            evts = dataManager.selectEvtGestationJour(dateSQL.format(dateCalendrier.getTime()));
+        }
+
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                evtAjh.add(evt.getNomEvt());
+            }
+
+            numEvt = "1";
+            nomEvt = evtAjh.get(0);
+
+            majEvt();
+        }
+    }
+    void OnClickCPageL() {
+        if (Integer.parseInt(numEvt) != 1) {
+            numEvt = String.valueOf(Integer.parseInt(numEvt)-1);
+            nomEvt = evtAjh.get(Integer.parseInt(numEvt)-1);
+            majEvt();
+        }
+
+        calendrier_pageL.setVisibility(View.VISIBLE);
+        calendrier_pageR.setVisibility(View.VISIBLE);
+        if (Integer.parseInt(numEvt) == 1) {
+            calendrier_pageL.setVisibility(View.INVISIBLE);
+        }
+    }
+    void OnClickCPageR() {
+        if (Integer.parseInt(numEvt) != evtAjh.size()) {
+            numEvt = String.valueOf(Integer.parseInt(numEvt)+1);
+            nomEvt = evtAjh.get(Integer.parseInt(numEvt)-1);
+            majEvt();
+        }
+
+        calendrier_pageL.setVisibility(View.VISIBLE);
+        calendrier_pageR.setVisibility(View.VISIBLE);
+        if (Integer.parseInt(numEvt) == evtAjh.size()) {
+            calendrier_pageR.setVisibility(View.INVISIBLE);
+        }
+    }
 
     // Fonctions en tout genre
     public boolean contientCarInterdit(String c) {
@@ -2289,8 +3680,8 @@ public class MainActivity extends AppCompatActivity {
                 uneCase = cases.get(i);
 
                 //Log.i(TAG + "_", "RAS");
-                Log.i(TAG + "_", String.valueOf(uneCase));
-                Log.i(TAG + "_", sdfDay.format(dateSQL.parse(evt.getDateChaleur())));
+                //Log.i(TAG + "_", String.valueOf(uneCase));
+                //Log.i(TAG + "_", sdfDay.format(dateSQL.parse(evt.getDateChaleur())));
 
                 if (!uneCase.get(0).equals("")) {
                     if (Integer.parseInt(uneCase.get(0)) == Integer.parseInt(sdfDay.format(dateSQL.parse(evt.getDateChaleur())))) {
@@ -2325,7 +3716,6 @@ public class MainActivity extends AppCompatActivity {
     }
     void mettreCalendrierAJour(String XX) {
         dateCalendrier.set(Integer.parseInt(sdfYear.format(dateCalendrier.getTime())), Integer.parseInt(sdfMonth.format(dateCalendrier.getTime()))-1, Integer.parseInt(XX));
-        Log.i(TAG, dateAffichage.format(dateCalendrier.getTime()));
     }
     void caseSelectionnee(String XX) {
         for (int i = 0; i < 42; i++) {
@@ -2334,19 +3724,21 @@ public class MainActivity extends AppCompatActivity {
             List<String> uneCase = new ArrayList<String>();
             uneCase = cases.get(i);
 
-            if (Integer.parseInt(uneCase.get(0)) == Integer.parseInt(XX)) {
-                // Log.i(TAG, "La case " + (i + 1) + " a été clické.");
+            if (!uneCase.get(0).equals("")) {
+                if (Integer.parseInt(uneCase.get(0)) == Integer.parseInt(XX)) {
+                    // Log.i(TAG, "La case " + (i + 1) + " a été clické.");
 
-                if (cOUg.equals("g")) {
-                    uneCase.set(1, "jGS");
-                    cases.set(i, uneCase);
-                    Log.i(TAG, "La case " + (i + 1) + " a été colorié en jGS.");
-                }
+                    if (cOUg.equals("g")) {
+                        uneCase.set(1, "jGS");
+                        cases.set(i, uneCase);
+                        Log.i(TAG, "La case " + (i + 1) + " a été colorié en jGS.");
+                    }
 
-                if (cOUg.equals("c")) {
-                    uneCase.set(1, "jCS");
-                    cases.set(i, uneCase);
-                    Log.i(TAG, "La case " + (i + 1) + " a été colorié en jCS.");
+                    if (cOUg.equals("c")) {
+                        uneCase.set(1, "jCS");
+                        cases.set(i, uneCase);
+                        Log.i(TAG, "La case " + (i + 1) + " a été colorié en jCS.");
+                    }
                 }
             }
         }
