@@ -89,6 +89,32 @@ public class dataManage extends SQLiteOpenHelper {
     }
 
 
+    public EvtV readByTheName(String nE) {
+        List<EvtV> evts = new ArrayList<>();
+        String WHERE_CLAUSE = NOM_EVT + " = ?";
+        String [] WHERE_ARGS = {nE};
+
+        Cursor cursor = this.getReadableDatabase().query( TABLE_NAME_V,
+                new String[] { KEY, NOM_EVT, DATE_DEBUT, DATE_CHALEUR, DATE_GESTATION },
+                WHERE_CLAUSE, WHERE_ARGS, null, null, null, null );
+
+        cursor.moveToFirst();
+
+        EvtV event = null;
+
+        while( ! cursor.isAfterLast() ) {
+            EvtV evt = new EvtV( cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+            evts.add(evt);
+            cursor.moveToNext();
+            event = evt;
+        }
+        cursor.close();
+        Log.i( TAG, "readByNom invoked" );
+
+        return event;
+    }
+
+
     public List<EvtV> readAll() {
         List<EvtV> evts = new ArrayList<>();
         String WHERE_CLAUSE = NOM_EVT + " = ?";
@@ -114,10 +140,13 @@ public class dataManage extends SQLiteOpenHelper {
 
     public List<EvtV> selectEvtChaleurMois(String d){
         List<EvtV> evts = new ArrayList<>();
+        Log.i("ClickChal1", "Création list");
 
         String SELECT = "SELECT * FROM " + TABLE_NAME_V + " WHERE " + DATE_CHALEUR + " LIKE '" + d + "-%' AND " + DATE_GESTATION + " IS NULL;";
+        Log.i("ClickChal1", SELECT);
 
         Cursor cursor = this.getReadableDatabase().rawQuery( SELECT, null );
+        Log.i("ClickChal1", "Lecture");
 
         cursor.moveToFirst();
 
@@ -127,6 +156,8 @@ public class dataManage extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
         cursor.close();
+        Log.i("ClickChal1", "Préparation retour");
+
         Log.i( TAG, "selectEvtChaleurMois invoked" );
 
         return evts;
@@ -198,6 +229,50 @@ public class dataManage extends SQLiteOpenHelper {
     }
 
 
+    public List<EvtV> chaleurPosterieur(String d) {
+        List<EvtV> evts = new ArrayList<>();
+
+        String SELECT = "SELECT * FROM EvtV WHERE dateChaleur < '" + d + "' AND dateGestation IS NULL;";
+
+
+        Cursor cursor = this.getReadableDatabase().rawQuery( SELECT, null );
+
+        cursor.moveToFirst();
+
+        while( ! cursor.isAfterLast() ) {
+            EvtV evt = new EvtV( cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+            evts.add(evt);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        Log.i( TAG, "selectEvtGestationMois invoked" );
+
+        return evts;
+    }
+
+
+    public List<EvtV> gestationPosterieur(String d) {
+        List<EvtV> evts = new ArrayList<>();
+
+        String SELECT = "SELECT * FROM EvtV WHERE dateGestation < '" + d + "';";
+
+
+        Cursor cursor = this.getReadableDatabase().rawQuery( SELECT, null );
+
+        cursor.moveToFirst();
+
+        while( ! cursor.isAfterLast() ) {
+            EvtV evt = new EvtV( cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+            evts.add(evt);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        Log.i( TAG, "selectEvtGestationMois invoked" );
+
+        return evts;
+    }
+
+
     public void supprimerEvtV(String nE){
         List<EvtV> evts = readByNom(nE);
 
@@ -213,5 +288,15 @@ public class dataManage extends SQLiteOpenHelper {
         this.getWritableDatabase().execSQL(DELETE);
 
         Log.i( TAG, "supprimerEvtV invoked" );
+    }
+
+    public void autoUpdateGestation(String nE) {
+        EvtV evt = readByTheName(nE);
+
+        String date = evt.getDateChaleur();
+        //String[]
+
+        //Integer year = Integer.parseInt();
+
     }
 }
