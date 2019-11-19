@@ -636,44 +636,93 @@
             </LinearLayout>
 
 
-            <!--Nom de l'évènement-->
-            <TextView
-                android:id="@+id/calendrier_nomDeEvt"
-                android:layout_width="720px"
-                android:layout_height="80px"
-                android:text="Lorem Ipsum"
-                android:gravity="center"
-                android:textColor="@color/dark"/>
-
-            <!--Choix de l'évènement-->
             <LinearLayout
-                android:id="@+id/calendrier_choixEvt"
+                android:id="@+id/calendrier_notifSrp"
                 android:layout_width="720px"
-                android:layout_height="86px"
-                android:orientation="horizontal"
-                android:gravity="center" >
+                android:layout_height="200px"
+                android:background="@drawable/recap_notif_sur_suppr"
+                android:gravity="center_horizontal|bottom">
 
                 <ImageView
-                    android:id="@+id/calendrier_pageL"
-                    android:layout_width="66px"
-                    android:layout_height="86px"
-                    android:background="@drawable/calendrier_page_gauche" />
-
-                <TextView
-                    android:id="@+id/calendrier_affPage"
-                    android:layout_width="66px"
-                    android:layout_height="86px"
-                    android:background="@drawable/calendrier_page"
-                    android:text="99"
-                    android:gravity="center"
-                    android:textSize="50px"
-                    android:textColor="@color/dark" />
+                    android:id="@+id/calendrier_srpOui"
+                    android:layout_width="160px"
+                    android:layout_height="50px"
+                    android:background="@drawable/recap_bt_oui" />
 
                 <ImageView
-                    android:id="@+id/calendrier_pageR"
-                    android:layout_width="66px"
+                    android:id="@+id/calendrier_srpNon"
+                    android:layout_width="160px"
+                    android:layout_height="50px"
+                    android:background="@drawable/recap_bt_non" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/calendrier_bas"
+                android:layout_width="720px"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/calendrier_tMoins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <!--Donner une apparence normale au calendrier-->
+                    <ImageView
+                        android:id="@+id/calendrier_balance"
+                        android:layout_width="80px"
+                        android:layout_height="80px" />
+
+                    <!--Nom de l'évènement-->
+                    <TextView
+                        android:id="@+id/calendrier_nomDeEvt"
+                        android:layout_width="560px"
+                        android:layout_height="80px"
+                        android:text="Lorem Ipsum"
+                        android:gravity="center"
+                        android:textColor="@color/dark"/>
+
+                    <ImageView
+                        android:id="@+id/calendrier_boutonMoins"
+                        android:layout_width="80px"
+                        android:layout_height="80px"
+                        android:background="@drawable/moins" />
+                </LinearLayout>
+
+                <!--Choix de l'évènement-->
+                <LinearLayout
+                    android:id="@+id/calendrier_choixEvt"
+                    android:layout_width="720px"
                     android:layout_height="86px"
-                    android:background="@drawable/calendrier_page_droite" />
+                    android:orientation="horizontal"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:id="@+id/calendrier_pageL"
+                        android:layout_width="66px"
+                        android:layout_height="86px"
+                        android:background="@drawable/calendrier_page_gauche" />
+
+                    <TextView
+                        android:id="@+id/calendrier_affPage"
+                        android:layout_width="66px"
+                        android:layout_height="86px"
+                        android:background="@drawable/calendrier_page"
+                        android:text="99"
+                        android:gravity="center"
+                        android:textSize="50px"
+                        android:textColor="@color/dark" />
+
+                    <ImageView
+                        android:id="@+id/calendrier_pageR"
+                        android:layout_width="66px"
+                        android:layout_height="86px"
+                        android:background="@drawable/calendrier_page_droite" />
+
+                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>

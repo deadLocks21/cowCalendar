@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -196,6 +197,15 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout conflit_notifSrp = null;
     private ImageView conflit_srpOui = null;
     private ImageView conflit_srpNon = null;
+
+    private LinearLayout calendrier_notifSrp = null;
+    private ImageView calendrier_srpOui = null;
+    private ImageView calendrier_srpNon = null;
+
+    private LinearLayout calendrier_bas = null;
+    private LinearLayout calendrier_tMoins = null;
+    private ImageView calendrier_balance = null;
+    private ImageView calendrier_boutonMoins = null;
 
 
     // Base de données
@@ -798,6 +808,24 @@ public class MainActivity extends AppCompatActivity {
                 OnClickSprNon();
             }
         });
+        calendrier_srpOui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickSprOui();
+            }
+        });
+        calendrier_srpNon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickSprNon();
+            }
+        });
+        calendrier_boutonMoins.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickbTMoins();
+            }
+        });
     }
 
 
@@ -977,6 +1005,15 @@ public class MainActivity extends AppCompatActivity {
         conflit_notifSrp = (LinearLayout) findViewById(R.id.conflit_notifSrp);
         conflit_srpOui = (ImageView) findViewById(R.id.conflit_srpOui);
         conflit_srpNon = (ImageView) findViewById(R.id.conflit_srpNon);
+
+        calendrier_notifSrp = (LinearLayout) findViewById(R.id.calendrier_notifSrp);
+        calendrier_srpOui = (ImageView) findViewById(R.id.calendrier_srpOui);
+        calendrier_srpNon = (ImageView) findViewById(R.id.calendrier_srpNon);
+
+        calendrier_tMoins = (LinearLayout)findViewById(R.id.calendrier_tMoins);
+        calendrier_bas = (LinearLayout)findViewById(R.id.calendrier_bas);
+        calendrier_balance = (ImageView)findViewById(R.id.calendrier_balance);
+        calendrier_boutonMoins = (ImageView)findViewById(R.id.calendrier_boutonMoins);
     }
     void miseEnPage() {
         if (width < 1300) {
@@ -1185,7 +1222,7 @@ public class MainActivity extends AppCompatActivity {
             setTextSize(calendrier_c42, 20);
 
             // Affichage des évènements
-            setHW(calendrier_nomDeEvt, 720, 80);
+            setHW(calendrier_nomDeEvt, 560, 80);
             setMargins(calendrier_nomDeEvt, 0, 15, 0, 25);
             setTextSize(calendrier_nomDeEvt, 25);
             setHW(calendrier_choixEvt, 720, 86);
@@ -1555,7 +1592,7 @@ public class MainActivity extends AppCompatActivity {
             setTextSize(calendrier_c42, 15);
 
             // Affichage des évènements
-            setHW(calendrier_nomDeEvt, 720, 80);
+            setHW(calendrier_nomDeEvt, 560, 80);
             setMargins(calendrier_nomDeEvt, 0, 15, 0, 16);
             setTextSize(calendrier_nomDeEvt, 16);
             setHW(calendrier_choixEvt, 720, 86);
@@ -1722,7 +1759,20 @@ public class MainActivity extends AppCompatActivity {
 
         setHW(conflit_notifSrp, 0, 0);
         setHW(conflit_srpNon, 160, 50);
+        setMargins(conflit_srpNon, 50, 0, 50, 20);
         setHW(conflit_srpOui, 160, 50);
+        setMargins(conflit_srpOui, 50, 0, 50, 20);
+
+        setHW(calendrier_notifSrp, 0, 0);
+        setHW(calendrier_srpNon, 160, 50);
+        setMargins(calendrier_srpNon, 50, 0, 50, 20);
+        setHW(calendrier_srpOui, 160, 50);
+        setMargins(calendrier_srpOui, 50, 0, 50, 20);
+
+        calendrier_bas.setLayoutParams(new LinearLayout.LayoutParams(720 * width / 720, LinearLayout.LayoutParams.WRAP_CONTENT));
+        calendrier_tMoins.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        setHW(calendrier_balance, 80, 80);
+        setHW(calendrier_boutonMoins, 80, 80);
     }
 
 
@@ -2864,8 +2914,10 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG + "_", "numEvt : "+numEvt);
         if (Integer.parseInt(numEvt) == 0) {
             setHW(calendrier_choixEvt, 0, 0);
+            calendrier_boutonMoins.setVisibility(View.INVISIBLE);
         }
         else {
+            calendrier_boutonMoins.setVisibility(View.VISIBLE);
             setHW(calendrier_choixEvt, 720, 86);
             setText(calendrier_affPage, numEvt);
             calendrier_pageL.setVisibility(View.INVISIBLE);
@@ -3081,6 +3133,19 @@ public class MainActivity extends AppCompatActivity {
         setHW(conflit_notifSrp, 0, 0);
 
         majConflit();
+    }
+    void affSrpCal(){
+        setHW(calendrier_notifSrp, 720, 200);
+        setHW(calendrier_fond, 0, 0);
+        calendrier_choixEvt.setVisibility(View.INVISIBLE);
+        calendrier_nomDeEvt.setVisibility(View.INVISIBLE);
+    }
+    void fermerSrpCal(){
+        aSrp = null;
+        setHW(calendrier_notifSrp, 0, 0);
+        setHW(calendrier_fond, 720, 665);
+        calendrier_choixEvt.setVisibility(View.VISIBLE);
+        calendrier_nomDeEvt.setVisibility(View.VISIBLE);
     }
 
 
@@ -4661,10 +4726,21 @@ public class MainActivity extends AppCompatActivity {
     }
     void OnClickSprNon() {
         fermerSrp();
+        fermerSrpCal();
     }
     void OnClickSprOui() {
         dataManager.supprimerEvtV(aSrp);
         fermerSrp();
+        fermerSrpCal();
+
+        joursDuMois();
+        majCalendrier();
+        razEvt();
+        cOUg = "";
+    }
+    void OnClickbTMoins() {
+        affSrpCal();
+        aSrp = String.valueOf(calendrier_nomDeEvt.getText());
     }
 
 
