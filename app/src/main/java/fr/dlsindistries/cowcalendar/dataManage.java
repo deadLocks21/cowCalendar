@@ -291,9 +291,9 @@ public class dataManage extends SQLiteOpenHelper {
         Long idEvt = evt.getIdEvt();
 
         String INSERT = "INSERT INTO " + TABLE_NAME_I + "(" + NOM_EVT + ", " + DATE_DEBUT + ", " + DATE_CHALEUR + ", " + DATE_GESTATION +
-                ") SELECT " + NOM_EVT + ", " + DATE_DEBUT + ", " + DATE_CHALEUR + ", " + DATE_GESTATION + " FROM " + TABLE_NAME_V + " WHERE " + KEY + "="+ idEvt + ");";
+                ") SELECT " + NOM_EVT + ", " + DATE_DEBUT + ", " + DATE_CHALEUR + ", " + DATE_GESTATION + " FROM " + TABLE_NAME_V + " WHERE " + KEY + "="+ idEvt + ";";
 
-        String DELETE = "DELETE FROM " + TABLE_NAME_V +" WHERE "+ KEY + "="+ idEvt + ");";
+        String DELETE = "DELETE FROM " + TABLE_NAME_V +" WHERE "+ KEY + "="+ idEvt + ";";
 
         this.getWritableDatabase().execSQL(INSERT);
         this.getWritableDatabase().execSQL(DELETE);

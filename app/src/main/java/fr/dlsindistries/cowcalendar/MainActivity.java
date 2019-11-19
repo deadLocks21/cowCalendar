@@ -193,6 +193,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView conflit_affPage = null;
     private ImageView conflit_pageR = null;
 
+    private LinearLayout conflit_notifSrp = null;
+    private ImageView conflit_srpOui = null;
+    private ImageView conflit_srpNon = null;
+
 
     // Base de données
     private dataManage dataManager = new dataManage(this);
@@ -231,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
     private List<List<String>> cases = new ArrayList<List<String>>();
     private List<String> chaleurPosterieur = new ArrayList<String>();
     private List<String> lignesConflit = new ArrayList<String>();
+    private String aSrp = null;
 
 
     @Override
@@ -719,6 +724,80 @@ public class MainActivity extends AppCompatActivity {
                 OnClickCross(10);
             }
         });
+        conflit_bin1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickBin(1);
+
+            }
+        });
+        conflit_bin2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickBin(2);
+            }
+        });
+        conflit_bin3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickBin(3);
+            }
+        });
+        conflit_bin4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickBin(4);
+            }
+        });
+        conflit_bin5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickBin(5);
+            }
+        });
+        conflit_bin6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickBin(6);
+            }
+        });
+        conflit_bin7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickBin(7);
+            }
+        });
+        conflit_bin8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickBin(8);
+            }
+        });
+        conflit_bin9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickBin(9);
+            }
+        });
+        conflit_bin10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickBin(10);
+            }
+        });
+
+        conflit_srpOui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickSprOui();
+            }
+        });
+        conflit_srpNon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickSprNon();
+            }
+        });
     }
 
 
@@ -895,6 +974,9 @@ public class MainActivity extends AppCompatActivity {
         conflit_affPage = (TextView) findViewById(R.id.conflit_affPage);
         conflit_pageR = (ImageView) findViewById(R.id.conflit_pageR);
 
+        conflit_notifSrp = (LinearLayout) findViewById(R.id.conflit_notifSrp);
+        conflit_srpOui = (ImageView) findViewById(R.id.conflit_srpOui);
+        conflit_srpNon = (ImageView) findViewById(R.id.conflit_srpNon);
     }
     void miseEnPage() {
         if (width < 1300) {
@@ -1636,8 +1718,11 @@ public class MainActivity extends AppCompatActivity {
             setText(conflit_affPage, "1");
             setHW(conflit_pageR, 66, 86);
             setMargins(conflit_pageR, 14, 0, 0, 0);
-
         }
+
+        setHW(conflit_notifSrp, 0, 0);
+        setHW(conflit_srpNon, 160, 50);
+        setHW(conflit_srpOui, 160, 50);
     }
 
 
@@ -2986,6 +3071,19 @@ public class MainActivity extends AppCompatActivity {
         lignesConflit.clear();
     }
 
+    void affSrp(){
+        setHW(conflit_notifSrp, 720, 200);
+        conflit_l10.setVisibility(View.INVISIBLE);
+        conflit_l9.setVisibility(View.INVISIBLE);
+    }
+    void fermerSrp(){
+        aSrp = null;
+        setHW(conflit_notifSrp, 0, 0);
+
+        majConflit();
+    }
+
+
 
     // Renseignement graphique
     void trouverWH() {
@@ -3094,6 +3192,8 @@ public class MainActivity extends AppCompatActivity {
     }
     void OnClickMenuConflit() {
         Log.i(TAG, "Ouverture du layout Conflit");
+        fermerSrp();
+
 
         //setHW(layoutMain, 720, 1100);
         //setHW(layoutAjouter, 720, 1100);
@@ -3174,6 +3274,9 @@ public class MainActivity extends AppCompatActivity {
             dataManager.insertEvt("aaaaaa", "2019-10-01", "2019-11-01");
             dataManager.insertEvt("aaaaaaa", "2019-10-01", "2019-11-01");
             dataManager.insertEvt("aaaaaaaa", "2019-10-01", "2019-11-01");
+            dataManager.insertEvt("c", "2019-10-01", "2019-11-05");
+            dataManager.insertEvt("bcb", "2019-10-01", "2019-11-05");
+
         }
     }
     void OnClickMoisL() throws ParseException {
@@ -4352,6 +4455,7 @@ public class MainActivity extends AppCompatActivity {
     void OnClickCPageLConflit() {
         Integer p = Integer.parseInt(String.valueOf(conflit_affPage.getText()));
         /*setText(conflit_affPage, "1");*/
+        fermerSrp();
 
         conflit_pageR.setVisibility(View.VISIBLE);
 
@@ -4414,6 +4518,7 @@ public class MainActivity extends AppCompatActivity {
     void OnClickCPageRConflit() {
         Integer p = Integer.parseInt(String.valueOf(conflit_affPage.getText()));
         /*setText(conflit_affPage, "1");*/
+        fermerSrp();
 
         /*if (chaleurPosterieur.size() > ((p)*10+9)) {*/
         conflit_pageL.setVisibility(View.VISIBLE);
@@ -4477,7 +4582,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i("ClickCross", "Click");
 
         if (i == 1) {
-            dataManager.autoUpdateChaleur(String.valueOf(conflit_evt1.getText()));
+            dataManager.supprimerEvtV(String.valueOf(conflit_evt1.getText()));
             majConflit();
         }
         if (i == 2) {
@@ -4516,6 +4621,50 @@ public class MainActivity extends AppCompatActivity {
             dataManager.autoUpdateChaleur(String.valueOf(conflit_evt10.getText()));
             majConflit();
         }
+    }
+    void OnClickBin(Integer i) {
+        Log.i("ClickBin", "Click");
+        affSrp();
+
+        if (i == 1) {
+            aSrp = String.valueOf(conflit_evt1.getText());
+        }
+        if (i == 2) {
+            aSrp = String.valueOf(conflit_evt2.getText());
+        }
+        if (i == 3) {
+            aSrp = String.valueOf(conflit_evt3.getText());
+        }
+        if (i == 4) {
+            aSrp = String.valueOf(conflit_evt4.getText());
+        }
+        if (i == 5) {
+            aSrp = String.valueOf(conflit_evt5.getText());
+        }
+        if (i == 6) {
+            aSrp = String.valueOf(conflit_evt6.getText());
+        }
+        if (i == 7) {
+            aSrp = String.valueOf(conflit_evt7.getText());
+        }
+        if (i == 8) {
+            aSrp = String.valueOf(conflit_evt8.getText());
+        }
+        if (i == 9) {
+            aSrp = String.valueOf(conflit_evt9.getText());
+        }
+        if (i == 10) {
+            aSrp = String.valueOf(conflit_evt10.getText());
+        }
+
+        Log.i("ClickBin", aSrp);
+    }
+    void OnClickSprNon() {
+        fermerSrp();
+    }
+    void OnClickSprOui() {
+        dataManager.supprimerEvtV(aSrp);
+        fermerSrp();
     }
 
 

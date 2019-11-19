@@ -1023,6 +1023,29 @@ android:textColor="@color/dark"                    android:layout_width="wrap_co
             </LinearLayout>
 
 
+            <LinearLayout
+                android:id="@+id/conflit_notifSrp"
+                android:layout_width="720px"
+                android:layout_height="200px"
+                android:background="@drawable/recap_notif_sur_suppr"
+                android:gravity="center_horizontal|bottom">
+
+                <ImageView
+                    android:id="@+id/conflit_srpOui"
+                    android:layout_width="160px"
+                    android:layout_height="50px"
+                    android:background="@drawable/recap_bt_oui" />
+
+                <ImageView
+                    android:id="@+id/conflit_srpNon"
+                    android:layout_width="160px"
+                    android:layout_height="50px"
+                    android:background="@drawable/recap_bt_non" />
+
+
+            </LinearLayout>
+
+
             <!--Ligne 9-->
             <LinearLayout
                 android:id="@+id/conflit_l9"
@@ -1102,6 +1125,7 @@ android:textColor="@color/dark"                    android:layout_width="wrap_co
                     android:background="@drawable/conflit_corbeille" />
 
             </LinearLayout>
+
 
             <!--Choix de l'évènement-->
             <LinearLayout

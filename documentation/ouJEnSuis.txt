@@ -1,1 +1,1 @@
-Reprendre le fichier OnClickJour et rapporter les fonctions dans mon recap des fonctions et des variables.
+Afficher des notifications offline.
