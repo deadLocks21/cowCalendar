@@ -6,7 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class dataManage extends SQLiteOpenHelper {
@@ -63,6 +65,15 @@ public class dataManage extends SQLiteOpenHelper {
         Log.i("DEBUG_", UPDATE);
         this.getWritableDatabase().execSQL(UPDATE);
         Log.i( TAG, "updateGestation invoked" );
+    }
+
+
+    public void updateChaleur(String nomEvt, String dateC){
+        nomEvt = nomEvt.replace( "'", "''" );
+        String UPDATE = "UPDATE " + TABLE_NAME_V + " SET " + DATE_CHALEUR + "='" + dateC + "' WHERE " + NOM_EVT + "='" + nomEvt + "';";
+        Log.i("DEBUG_", UPDATE);
+        this.getWritableDatabase().execSQL(UPDATE);
+        Log.i( TAG, "updateChaleur invoked" );
     }
 
 
@@ -290,13 +301,102 @@ public class dataManage extends SQLiteOpenHelper {
         Log.i( TAG, "supprimerEvtV invoked" );
     }
 
+
     public void autoUpdateGestation(String nE) {
         EvtV evt = readByTheName(nE);
 
         String date = evt.getDateChaleur();
-        //String[]
+        Calendar leJour = Calendar.getInstance();
 
-        //Integer year = Integer.parseInt();
+
+        Integer year = strToInt(String.valueOf(date.charAt(0)))*1000 + strToInt(String.valueOf(date.charAt(1)))*100 + strToInt(String.valueOf(date.charAt(2)))*10 + strToInt(String.valueOf(date.charAt(3)));
+        Integer month = strToInt(String.valueOf(date.charAt(5)))*10 + strToInt(String.valueOf(date.charAt(6)));
+        Integer day = strToInt(String.valueOf(date.charAt(8)))*10 + strToInt(String.valueOf(date.charAt(9)));
+
+        leJour.set(year, month-1, day);
+        leJour.add(Calendar.DATE, 259);
+
+        SimpleDateFormat sqlDate = new SimpleDateFormat("yyyy-MM-dd");
+
+        updateGestation(nE, sqlDate.format(leJour.getTime()));
+
+        Log.i(TAG, "autoUpdateGestation invoked");
+    }
+
+
+    public void autoUpdateChaleur(String nE) {
+        EvtV evt = readByTheName(nE);
+
+        String date = evt.getDateChaleur();
+        Calendar leJour = Calendar.getInstance();
+
+
+        Integer year = strToInt(String.valueOf(date.charAt(0)))*1000 + strToInt(String.valueOf(date.charAt(1)))*100 + strToInt(String.valueOf(date.charAt(2)))*10 + strToInt(String.valueOf(date.charAt(3)));
+        Integer month = strToInt(String.valueOf(date.charAt(5)))*10 + strToInt(String.valueOf(date.charAt(6)));
+        Integer day = strToInt(String.valueOf(date.charAt(8)))*10 + strToInt(String.valueOf(date.charAt(9)));
+
+        leJour.set(year, month-1, day);
+        leJour.add(Calendar.DATE, 21);
+
+        SimpleDateFormat sqlDate = new SimpleDateFormat("yyyy-MM-dd");
+
+        updateChaleur(nE, sqlDate.format(leJour.getTime()));
+
+        Log.i(TAG, "autoUpdateChaleur invoked");
+    }
+
+
+    public Integer strToInt(String s){
+        Integer varR = null;
+
+        if (s.equals("1")){
+            varR = 1;
+        }
+        if (s.equals("2")){
+            varR = 2;
+        }
+
+        if (s.equals("3")){
+            varR = 3;
+        }
+
+        if (s.equals("4")){
+            varR = 4;
+        }
+
+        if (s.equals("5")){
+            varR = 5;
+        }
+
+        if (s.equals("6")){
+            varR = 6;
+        }
+
+        if (s.equals("7")){
+            varR = 7;
+        }
+
+        if (s.equals("8")){
+            varR = 8;
+        }
+
+        if (s.equals("9")){
+            varR = 9;
+        }
+
+        if (s.equals("0")){
+            varR = 0;
+        }
+
+
+        return varR;
+    }
+
+
+    public void razBDD() {
+        String DELETE = "DELETE FROM " + TABLE_NAME_V + ";";
+
+        this.getWritableDatabase().execSQL(DELETE);
 
     }
 }

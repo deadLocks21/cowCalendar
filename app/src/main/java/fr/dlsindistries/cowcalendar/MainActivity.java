@@ -240,10 +240,8 @@ public class MainActivity extends AppCompatActivity {
 
         trouverWH();
 
-
         initPage();
         miseEnPage();
-
 
         initListCases();
 
@@ -658,6 +656,67 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 OnClickOK(10);
+            }
+        });
+        conflit_croix1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickCross(1);
+
+            }
+        });
+        conflit_croix2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickCross(2);
+            }
+        });
+        conflit_croix3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickCross(3);
+            }
+        });
+        conflit_croix4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickCross(4);
+            }
+        });
+        conflit_croix5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickCross(5);
+            }
+        });
+        conflit_croix6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickCross(6);
+            }
+        });
+        conflit_croix7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickCross(7);
+            }
+        });
+        conflit_croix8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickCross(8);
+            }
+        });
+        conflit_croix9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickCross(9);
+            }
+        });
+        conflit_croix10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickCross(10);
             }
         });
     }
@@ -2738,8 +2797,33 @@ public class MainActivity extends AppCompatActivity {
         evtAjh.clear();
         majEvt();
     }
+
+    void trouverConflit() {
+        lignesConflit.clear();
+        chaleurPosterieur.clear();
+
+        Calendar now = Calendar.getInstance();
+
+        List<EvtV> evts = new ArrayList<EvtV>();
+        evts =  dataManager.chaleurPosterieur(dateSQL.format(now.getTime()));
+        if (evts.size() != 0) {
+            for ( EvtV evt : evts ) {
+                chaleurPosterieur.add(evt.getNomEvt());
+            }
+        }
+
+        if (chaleurPosterieur.size() == 0) {
+            conflit_choixEvt.setVisibility(View.INVISIBLE);
+        }
+
+        if (chaleurPosterieur.size() < 11) {
+            conflit_choixEvt.setVisibility(View.INVISIBLE);
+        }
+    }
+
     void majConflit() {
         razConflit();
+        trouverConflit();
         /*Log.i("ConflitBug", "razConflit");*/
         Integer p = Integer.parseInt(String.valueOf(conflit_affPage.getText()));
         /*Log.i("ConflitBug", "detPage");
@@ -3023,76 +3107,8 @@ public class MainActivity extends AppCompatActivity {
 
         setText(conflit_affPage, "1");
         conflit_pageL.setVisibility(View.INVISIBLE);
-        lignesConflit.clear();
-        chaleurPosterieur.clear();
-
-        Calendar now = Calendar.getInstance();
-
-        List<EvtV> evts = new ArrayList<EvtV>();
-        evts =  dataManager.chaleurPosterieur(dateSQL.format(now.getTime()));
-        if (evts.size() != 0) {
-            for ( EvtV evt : evts ) {
-                chaleurPosterieur.add(evt.getNomEvt());
-            }
-        }
-
-        if (chaleurPosterieur.size() == 0) {
-            conflit_choixEvt.setVisibility(View.INVISIBLE);
-        }
-
-        if (chaleurPosterieur.size() < 11) {
-            conflit_choixEvt.setVisibility(View.INVISIBLE);
-        }
 
         majConflit();
-
-        /*setText(conflit_affPage, "1");
-
-
-        Calendar now = Calendar.getInstance();
-
-        chaleurPosterieur.clear();
-        List<EvtV> evts = new ArrayList<EvtV>();
-        evts.clear();
-        evts =  dataManager.chaleurPosterieur(dateSQL.format(now.getTime()));
-
-        Log.i(TAG + "_", String.valueOf(chaleurPosterieur.size()));
-
-        if (evts.size() != 0) {
-            for ( EvtV evt : evts ) {
-                chaleurPosterieur.add(evt.getNomEvt());
-            }
-        }
-
-        lignesConflit.clear();
-        for (int i = 0; i < 10; i++) {
-            lignesConflit.add("");
-        }
-
-        setHW(conflit_choixEvt, 720, 86);
-        if (chaleurPosterieur.size() < 11) {
-            setHW(conflit_choixEvt, 0, 0);
-            updateMoins10Conflit();
-        }
-        else {
-            Integer numP = Integer.parseInt((String) conflit_affPage.getText());
-
-
-            if (chaleurPosterieur.size() < ((numP)*10)) {
-                updateIncConflit();
-                conflit_pageR.setVisibility(View.INVISIBLE);
-                conflit_pageL.setVisibility(View.VISIBLE);
-            }
-            else {
-                updateCompletConflit();
-                conflit_pageR.setVisibility(View.VISIBLE);
-                conflit_pageL.setVisibility(View.VISIBLE);
-            }
-        }
-
-        conflit_pageL.setVisibility(View.INVISIBLE);
-
-        majConflit();*/
     }
     void OnClickAjouter() throws ParseException {
         setHW(ajouter_notif_car_inc, 0, 0);
@@ -3140,7 +3156,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if ("uneBaseDeTravail".equals(nomEvt)) {
+        if ("travail".equals(nomEvt)) {
+            dataManager.razBDD();
             dataManager.insertEvt("a", "2019-10-01", "2019-11-01");
             dataManager.insertEvt("aa", "2019-10-01", "2019-11-01");
             dataManager.insertEvt("aaa", "2019-10-01", "2019-11-01");
@@ -4411,49 +4428,93 @@ public class MainActivity extends AppCompatActivity {
         if (chaleurPosterieur.size() < ((p+1)*10+1)) {
             conflit_pageR.setVisibility(View.INVISIBLE);
         }
-        //}
-
-        /*razConflit();
-
-        setText(conflit_affPage, String.valueOf((Integer.parseInt(String.valueOf(conflit_affPage.getText()))+1)));
-
-        if (chaleurPosterieur.size() < 11) {
-            setHW(conflit_choixEvt, 0, 0);
-            updateMoins10Conflit();
-        }
-        else {
-            Integer numP = Integer.parseInt((String) conflit_affPage.getText());
-
-
-            if (chaleurPosterieur.size() < ((numP)*10)) {
-                updateIncConflit();
-                conflit_pageR.setVisibility(View.INVISIBLE);
-            }
-            else {
-                updateCompletConflit();
-            }
-        }
-
-        majConflit();*/
     }
     void OnClickOK(Integer i) {
         Log.i("ClickOK", "Click");
 
         if (i == 1) {
-            List<EvtV> evts = dataManager.readByNom(String.valueOf(conflit_evt1.getText()));
-            EvtV event = null;
-            for (EvtV evt : evts) {
-                event = evt;
-            }
-
-            dataManager.autoUpdateGestation(event.getNomEvt());
+            dataManager.autoUpdateGestation(String.valueOf(conflit_evt1.getText()));
+            majConflit();
         }
-
         if (i == 2) {
-            List<EvtV> evts = dataManager.readByNom(String.valueOf(conflit_evt2.getText()));
-            for (EvtV evt : evts) {
-                Log.i("ClickOK", String.valueOf(evt.getDateChaleur()));
-            }
+            dataManager.autoUpdateGestation(String.valueOf(conflit_evt2.getText()));
+            majConflit();
+        }
+        if (i == 3) {
+            dataManager.autoUpdateGestation(String.valueOf(conflit_evt3.getText()));
+            majConflit();
+        }
+        if (i == 4) {
+            dataManager.autoUpdateGestation(String.valueOf(conflit_evt4.getText()));
+            majConflit();
+        }
+        if (i == 5) {
+            dataManager.autoUpdateGestation(String.valueOf(conflit_evt5.getText()));
+            majConflit();
+        }
+        if (i == 6) {
+            dataManager.autoUpdateGestation(String.valueOf(conflit_evt6.getText()));
+            majConflit();
+        }
+        if (i == 7) {
+            dataManager.autoUpdateGestation(String.valueOf(conflit_evt7.getText()));
+            majConflit();
+        }
+        if (i == 8) {
+            dataManager.autoUpdateGestation(String.valueOf(conflit_evt8.getText()));
+            majConflit();
+        }
+        if (i == 9) {
+            dataManager.autoUpdateGestation(String.valueOf(conflit_evt9.getText()));
+            majConflit();
+        }
+        if (i == 10) {
+            dataManager.autoUpdateGestation(String.valueOf(conflit_evt10.getText()));
+            majConflit();
+        }
+    }
+    void OnClickCross(Integer i) {
+        Log.i("ClickCross", "Click");
+
+        if (i == 1) {
+            dataManager.autoUpdateChaleur(String.valueOf(conflit_evt1.getText()));
+            majConflit();
+        }
+        if (i == 2) {
+            dataManager.autoUpdateChaleur(String.valueOf(conflit_evt2.getText()));
+            majConflit();
+        }
+        if (i == 3) {
+            dataManager.autoUpdateChaleur(String.valueOf(conflit_evt3.getText()));
+            majConflit();
+        }
+        if (i == 4) {
+            dataManager.autoUpdateChaleur(String.valueOf(conflit_evt4.getText()));
+            majConflit();
+        }
+        if (i == 5) {
+            dataManager.autoUpdateChaleur(String.valueOf(conflit_evt5.getText()));
+            majConflit();
+        }
+        if (i == 6) {
+            dataManager.autoUpdateChaleur(String.valueOf(conflit_evt6.getText()));
+            majConflit();
+        }
+        if (i == 7) {
+            dataManager.autoUpdateChaleur(String.valueOf(conflit_evt7.getText()));
+            majConflit();
+        }
+        if (i == 8) {
+            dataManager.autoUpdateChaleur(String.valueOf(conflit_evt8.getText()));
+            majConflit();
+        }
+        if (i == 9) {
+            dataManager.autoUpdateChaleur(String.valueOf(conflit_evt9.getText()));
+            majConflit();
+        }
+        if (i == 10) {
+            dataManager.autoUpdateChaleur(String.valueOf(conflit_evt10.getText()));
+            majConflit();
         }
     }
 
@@ -4585,5 +4646,50 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+    public Integer strToInt(String s){
+        Integer varR = null;
+
+        if ("1" == s){
+            varR = 1;
+        }
+        if (s.equals("2")){
+            varR = 2;
+        }
+
+        if (s.equals("3")){
+            varR = 3;
+        }
+
+        if (s.equals("4")){
+            varR = 4;
+        }
+
+        if (s.equals("5")){
+            varR = 5;
+        }
+
+        if (s.equals("6")){
+            varR = 6;
+        }
+
+        if (s.equals("7")){
+            varR = 7;
+        }
+
+        if (s.equals("8")){
+            varR = 8;
+        }
+
+        if (s.equals("9")){
+            varR = 9;
+        }
+
+        if (s.equals("0")){
+            varR = 0;
+        }
+
+
+        return varR;
     }
 }
