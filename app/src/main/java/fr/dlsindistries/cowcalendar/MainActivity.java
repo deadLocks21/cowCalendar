@@ -3321,7 +3321,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if ("travail".equals(nomEvt)) {
+        /*if ("travail".equals(nomEvt)) {
             dataManager.razBDD();
             dataManager.insertEvt("a", "2019-10-01", "2019-11-01");
             dataManager.insertEvt("aa", "2019-10-01", "2019-11-01");
@@ -3342,7 +3342,7 @@ public class MainActivity extends AppCompatActivity {
             dataManager.insertEvt("c", "2019-10-01", "2019-11-05");
             dataManager.insertEvt("bcb", "2019-10-01", "2019-11-05");
 
-        }
+        }*/
     }
     void OnClickMoisL() throws ParseException {
         moisAv();
